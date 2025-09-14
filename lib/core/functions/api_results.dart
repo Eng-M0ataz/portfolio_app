@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'failure.dart';
+import 'package:portfolio_website/core/errors/failure.dart';
 
 sealed class ApiResult<T> {}
 
@@ -29,9 +29,7 @@ Future<ApiResult<TResult>> executeApi<TDto, TResult>({
     );
   } catch (e) {
     return ApiErrorResult<TResult>(
-      failure: Failure(
-        errorMessage: e.toString(),
-      ),
+      failure: Failure(errorMessage: e.toString()),
     );
   }
 }
