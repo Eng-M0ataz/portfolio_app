@@ -65,10 +65,6 @@ android/app/src/main/res/values/styles.xml
 android/app/src/main/res/values-night/styles.xml
 android/app/src/profile/AndroidManifest.xml
 android/gradle/wrapper/gradle-wrapper.properties
-assets/fonts/Lato-Black.ttf
-assets/fonts/Lato-Bold.ttf
-assets/fonts/Lato-Medium.ttf
-assets/fonts/Lato-Semibold.ttf
 ios/.gitignore
 ios/Flutter/AppFrameworkInfo.plist
 ios/Flutter/Debug.xcconfig
