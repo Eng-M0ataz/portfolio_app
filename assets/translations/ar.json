@@ -1,3 +1,14 @@
 {
-     "home" :"home"
+     "home": "الرئيسية",
+     "services": "الخدمات",
+     "about_me": "عني",
+     "hi": "مرحباً، أنا",
+     "my_name": "معتز إبراهيم",
+     "hire_me": "وظفني",
+     "download_cv": "تحميل السيرة الذاتية",
+     "experiences": "الخبرات",
+     "project": "المشاريع المنجزة",
+     "happy_clients": "عملاء سعداء",
+     "portfolio": "الأعمال",
+     "contact_me": "تواصل معي"
 }

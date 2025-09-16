@@ -1,0 +1,12 @@
+<svg width="514" height="66" viewBox="0 0 514 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="paint0_linear_587_661" x1="-4" y1="17.9" x2="464.844" y2="42.0001" gradientUnits="userSpaceOnUse">
+<stop stop-color="#984300"/>
+<stop offset="0.463542" stop-color="#FD6F00"/>
+<stop offset="1" stop-color="#CA5900"/>
+</linearGradient>
+</defs>
+<text x="0" y="50" fill="url(#paint0_linear_587_661)" font-size="52" font-weight="700" font-family="Lato, Arial, Helvetica, sans-serif" letter-spacing="1">
+Flutter Developer
+</text>
+</svg>

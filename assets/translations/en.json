@@ -1,3 +1,14 @@
 {
-    "home" :"home"
+    "home": "Home",
+    "services": "Services",
+    "about_me": "About me",
+    "hi": "Hi I am",
+    "my_name": "Moataz Ebrahim",
+    "hire_me": "Hire Me",
+    "download_cv": "Download CV",
+    "experiences": "Experiences",
+    "project": "Project done",
+    "happy_clients": "happy Clients",
+    "portfolio": "Portfolio",
+    "contact_me": "Contact me"
 }
