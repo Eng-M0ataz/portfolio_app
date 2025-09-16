@@ -1,3 +1,22 @@
 {
-     "home" :"home"
+     "portfolio": "الأعمال",
+     "all": "الكل",
+     "website_design": "تصميم المواقع",
+     "app_mobile_design": "تصميم تطبيقات الموبايل",
+     "app_desktop": "تطبيقات سطح المكتب",
+     "branding": "الهوية البصرية",
+     "name_project": "اسم المشروع",
+     "categories": "التصنيفات",
+     "contact_me": "تواصل معي",
+     "cultivating_connections": "بناء الروابط: تواصل معي الآن",
+     "name": "الاسم",
+     "email": "البريد الإلكتروني",
+     "phone_number": "رقم الهاتف",
+     "service_of_interest": "الخدمة المطلوبة",
+     "timeline": "المدة الزمنية",
+     "project_details": "تفاصيل المشروع",
+     "send": "إرسال",
+     "home": "الرئيسية",
+     "services": "الخدمات",
+     "about_me": "من أنا"
 }

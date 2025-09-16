@@ -12,6 +12,9 @@ abstract class AppSizes {
   static const double paddingMd_20 = 20.0;
   static const double paddingLg_24 = 24.0;
   static const double paddingXl_32 = 32.0;
+  static const double paddingXl_40 = 40.0;
+  static const double padding_80 = 80.0;
+  static const double padding_214=214.0;
 
   // icon sizes
   static const double icon_8 = 8.0;
@@ -88,6 +91,7 @@ abstract class AppSizes {
   static const double spaceBetweenItems_56 = 56.0;
   static const double spaceBetweenItems_64 = 64.0;
   static const double spaceBetweenItems_72 = 72.0;
+  static const double spaceBetweenItems_150 = 150.0;
 
   // Default Spacing Between Sections
 
