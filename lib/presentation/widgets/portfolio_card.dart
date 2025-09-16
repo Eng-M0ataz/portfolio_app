@@ -51,13 +51,13 @@ class PortfolioCard extends StatelessWidget {
                 Text(
                   projectName,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    color: AppColorsDark.greyC6C6,
+                    color: AppColorsDark.greyc6C6,
                   ),
                 ),
                 Text(
                   category,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    color: AppColorsDark.greyC6C6,
+                    color: AppColorsDark.greyc6C6,
                   ),
                 ),
               ],

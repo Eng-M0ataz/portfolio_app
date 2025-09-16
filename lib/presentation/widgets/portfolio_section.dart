@@ -27,7 +27,7 @@ class PortfolioSection extends StatelessWidget {
             children: [
               customElevatedButton(
                 context: context,
-                width: 100,
+
                 height: 54,
                 title: LocaleKeys.all.tr(),
                 backColor: AppColorsDark.orange,
@@ -36,7 +36,7 @@ class PortfolioSection extends StatelessWidget {
               SizedBox(width: AppSizes.spaceBetweenItems_24),
               customElevatedButton(
                 context: context,
-                width: 199,
+
                 height: 54,
                 title: LocaleKeys.website_design.tr(),
                 onPress: () {},
@@ -44,7 +44,7 @@ class PortfolioSection extends StatelessWidget {
               SizedBox(width: AppSizes.spaceBetweenItems_24),
               customElevatedButton(
                 context: context,
-                width: 224,
+
                 height: 54,
                 title: LocaleKeys.app_mobile_design.tr(),
                 onPress: () {},
@@ -52,7 +52,7 @@ class PortfolioSection extends StatelessWidget {
               SizedBox(width: AppSizes.spaceBetweenItems_24),
               customElevatedButton(
                 context: context,
-                width: 179,
+
                 height: 54,
                 title: LocaleKeys.app_desktop.tr(),
                 onPress: () {},
@@ -60,7 +60,7 @@ class PortfolioSection extends StatelessWidget {
               SizedBox(width: AppSizes.spaceBetweenItems_24),
               customElevatedButton(
                 context: context,
-                width: 143,
+
                 height: 54,
                 title: LocaleKeys.branding.tr(),
                 onPress: () {},
@@ -100,16 +100,16 @@ Widget customElevatedButton({
   Color? forColor,
   required String title,
   required double height,
-  required double width,
+
   required BuildContext context,
 }) {
   return SizedBox(
     height: height,
-    width: width,
+
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: backColor ?? AppColorsDark.grey_252525,
-        foregroundColor: AppColorsDark.greyC6C6,
+        foregroundColor: AppColorsDark.greyc6C6,
       ),
       onPressed: onPress,
       child: Text(title, style: Theme.of(context).textTheme.labelLarge),

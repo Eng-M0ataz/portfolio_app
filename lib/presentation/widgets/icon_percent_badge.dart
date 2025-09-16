@@ -29,7 +29,7 @@ class IconPercentBadge extends StatelessWidget {
           lineWidth: lineWidth,
           percent: percent,
           animation: true,
-          animationDuration: 1000,
+          animationDuration: 2000,
           backgroundColor: AppColorsDark.grey_252525,
           progressColor: AppColorsDark.orange,
           circularStrokeCap: CircularStrokeCap.round,

@@ -49,38 +49,37 @@ abstract class AppThemeDark {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-
         filled: true,
         fillColor: AppColorsDark.grey_252525,
-
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(AppSizes.borderRadiusMd_8),
           ),
         ),
-
         hintStyle: TextStyle(
-        fontFamily: AppFonts.lato,
-        fontWeight: FontWeight.w500,
-        fontSize: AppSizes.font_16,
-        color: AppColorsDark.grey_959,
+          fontFamily: AppFonts.lato,
+          fontWeight: FontWeight.w500,
+          fontSize: AppSizes.font_16,
+          color: AppColorsDark.grey_959,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+        ),
       ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
-
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: AppColorsDark.orange,
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+      dividerTheme: DividerThemeData(
+        color: AppColorsDark.grey_7070,
+        thickness: 1,
       ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
-      ),
-    ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(
-    color: AppColorsDark.orange,
-    ),
-    dividerTheme: DividerThemeData(color: AppColorsDark.grey_7070),
-    textTheme: textTheme,
+      textTheme: textTheme,
     );
-    }
+  }
 }

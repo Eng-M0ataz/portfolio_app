@@ -11,27 +11,33 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SvgPicture.asset(Assets.assetsImagesLOGO),
-        Row(
-          spacing: AppSizes.spaceBetweenItems_56,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            AppBarTextWidget(
-              text: LocaleKeys.home.tr(),
-              isHome: true,
-              onTap: () {},
-            ),
-            AppBarTextWidget(text: LocaleKeys.services.tr(), onTap: () {}),
-            AppBarTextWidget(text: LocaleKeys.about_me.tr(), onTap: () {}),
-            AppBarTextWidget(text: LocaleKeys.portfolio.tr(), onTap: () {}),
-            AppBarTextWidget(text: LocaleKeys.contact_me.tr(), onTap: () {}),
-          ],
-        ),
-        ElevatedButton(onPressed: () {}, child: Text(LocaleKeys.hire_me.tr())),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSizes.padding_80),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SvgPicture.asset(Assets.assetsImagesLOGO),
+          Row(
+            spacing: AppSizes.spaceBetweenItems_56,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              AppBarTextWidget(
+                text: LocaleKeys.home.tr(),
+                isHome: true,
+                onTap: () {},
+              ),
+              AppBarTextWidget(text: LocaleKeys.services.tr(), onTap: () {}),
+              AppBarTextWidget(text: LocaleKeys.about_me.tr(), onTap: () {}),
+              AppBarTextWidget(text: LocaleKeys.portfolio.tr(), onTap: () {}),
+              AppBarTextWidget(text: LocaleKeys.contact_me.tr(), onTap: () {}),
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text(LocaleKeys.hire_me.tr()),
+          ),
+        ],
+      ),
     );
   }
 }

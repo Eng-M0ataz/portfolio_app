@@ -7,7 +7,7 @@ import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/connection_widget.dart';
-import 'package:portfolio_website/presentation/widgets/infro_custom_widget.dart';
+import 'package:portfolio_website/presentation/widgets/info_custom_widget.dart';
 
 class IntroWidget extends StatelessWidget {
   const IntroWidget({super.key});
@@ -20,11 +20,42 @@ class IntroWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(LocaleKeys.hi.tr()),
-            Text(LocaleKeys.my_name.tr()),
+            Text(
+              LocaleKeys.hi.tr(),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge!.copyWith(color: AppColorsDark.grey_7070),
+            ),
+            SizedBox(height: AppSizes.spaceBetweenItems_8),
+            Text(
+              LocaleKeys.my_name.tr(),
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                color: AppColorsDark.grey_959,
+              ),
+            ),
             SizedBox(height: AppSizes.spaceBetweenItems_24),
             SvgPicture.asset(Assets.assetsImagesFlutterDev),
             SizedBox(height: AppSizes.spaceBetweenItems_16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ConectionWidget(
+                  icon: FontAwesomeIcons.linkedin,
+                  onPressed: () {},
+                ),
+                const SizedBox(width: AppSizes.spaceBetweenItems_16),
+                ConectionWidget(
+                  icon: FontAwesomeIcons.github,
+                  onPressed: () {},
+                ),
+                const SizedBox(width: AppSizes.spaceBetweenItems_16),
+                ConectionWidget(
+                  icon: FontAwesomeIcons.whatsapp,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            SizedBox(height: AppSizes.spaceBetweenItems_56),
             Row(
               spacing: AppSizes.spaceBetweenItems_24,
               children: [
@@ -66,25 +97,7 @@ class IntroWidget extends StatelessWidget {
               ],
             ),
             SizedBox(height: AppSizes.spaceBetweenItems_16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ConectionWidget(
-                  icon: FontAwesomeIcons.linkedin,
-                  onPressed: () {},
-                ),
-                const SizedBox(width: AppSizes.spaceBetweenItems_16),
-                ConectionWidget(
-                  icon: FontAwesomeIcons.github,
-                  onPressed: () {},
-                ),
-                const SizedBox(width: AppSizes.spaceBetweenItems_16),
-                ConectionWidget(
-                  icon: FontAwesomeIcons.whatsapp,
-                  onPressed: () {},
-                ),
-              ],
-            ),
+
             SizedBox(height: AppSizes.spaceBetweenItems_50),
             InfoCustomWidget(),
           ],
