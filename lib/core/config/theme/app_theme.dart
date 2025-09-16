@@ -23,6 +23,10 @@ abstract class AppThemeDark {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSizes.paddingXl_32,
+            vertical: AppSizes.paddingMd_16,
+          ),
           backgroundColor: AppColorsDark.orange,
           foregroundColor: AppColorsDark.white,
           shape: RoundedRectangleBorder(
