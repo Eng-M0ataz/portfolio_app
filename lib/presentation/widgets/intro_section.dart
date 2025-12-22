@@ -11,12 +11,11 @@ class IntroSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSizes.padding_80),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IntroWidget(),
-          SizedBox(height: AppSizes.spaceBetweenItems_130),
-          PersonalImagWidget(),
+          const IntroWidget(),
+          Flexible(child: PersonalImagWidget()),
         ],
       ),
     );

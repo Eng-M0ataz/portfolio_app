@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
-import 'package:portfolio_website/core/config/theme/text_theme.dart';
 import 'package:portfolio_website/core/utils/constants/app_fonts.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
@@ -24,8 +23,8 @@ abstract class AppThemeDark {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(
-            horizontal: AppSizes.paddingXl_32,
-            vertical: AppSizes.paddingMd_16,
+            horizontal: AppSizes.paddingMd_20,
+            vertical: AppSizes.paddingSm_8,
           ),
           backgroundColor: AppColorsDark.orange,
           foregroundColor: AppColorsDark.white,
@@ -56,12 +55,6 @@ abstract class AppThemeDark {
             Radius.circular(AppSizes.borderRadiusMd_8),
           ),
         ),
-        hintStyle: TextStyle(
-          fontFamily: AppFonts.lato,
-          fontWeight: FontWeight.w500,
-          fontSize: AppSizes.font_16,
-          color: AppColorsDark.grey_959,
-        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
         ),
@@ -79,7 +72,6 @@ abstract class AppThemeDark {
         color: AppColorsDark.grey_7070,
         thickness: 1,
       ),
-      textTheme: textTheme,
     );
   }
 }

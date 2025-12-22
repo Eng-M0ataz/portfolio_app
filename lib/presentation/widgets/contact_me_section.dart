@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/presentation/widgets/section_header.dart';
+
 import '../../core/localization/locale_keys.g.dart';
 import '../../core/utils/constants/sizes.dart' show AppSizes;
 
@@ -14,16 +16,9 @@ class ContactMeSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            LocaleKeys.contact_me.tr(),
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-          SizedBox(height: AppSizes.spaceBetweenItems_16),
-          Text(
-            LocaleKeys.cultivating_connections.tr(),
-            style: Theme.of(
-              context,
-            ).textTheme.labelSmall!.copyWith(color: AppColorsDark.grey_7070),
+          SectionHeader(
+            sectionName: LocaleKeys.contact_me.tr(),
+            description: LocaleKeys.cultivating_connections.tr(),
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_50),
           Column(
@@ -71,7 +66,7 @@ class ContactMeSection extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: AppColorsDark.grey_959,
                         ),
-                        maxLines:10,
+                        maxLines: 10,
                         decoration: InputDecoration(
                           hintText: LocaleKeys.project_details.tr(),
                         ),

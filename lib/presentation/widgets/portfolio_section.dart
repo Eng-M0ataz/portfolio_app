@@ -8,7 +8,7 @@ import '../../core/utils/constants/sizes.dart';
 
 class PortfolioSection extends StatelessWidget {
   const PortfolioSection({super.key});
-
+  final List<String> items = const [];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,50 +22,11 @@ class PortfolioSection extends StatelessWidget {
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_40),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              customElevatedButton(
-                context: context,
+          DefaultTabController(
+            length: items.length,
+            initialIndex: 0,
 
-                height: 54,
-                title: LocaleKeys.all.tr(),
-                backColor: AppColorsDark.orange,
-                onPress: () {},
-              ),
-              SizedBox(width: AppSizes.spaceBetweenItems_24),
-              customElevatedButton(
-                context: context,
-
-                height: 54,
-                title: LocaleKeys.website_design.tr(),
-                onPress: () {},
-              ),
-              SizedBox(width: AppSizes.spaceBetweenItems_24),
-              customElevatedButton(
-                context: context,
-
-                height: 54,
-                title: LocaleKeys.app_mobile_design.tr(),
-                onPress: () {},
-              ),
-              SizedBox(width: AppSizes.spaceBetweenItems_24),
-              customElevatedButton(
-                context: context,
-
-                height: 54,
-                title: LocaleKeys.app_desktop.tr(),
-                onPress: () {},
-              ),
-              SizedBox(width: AppSizes.spaceBetweenItems_24),
-              customElevatedButton(
-                context: context,
-
-                height: 54,
-                title: LocaleKeys.branding.tr(),
-                onPress: () {},
-              ),
-            ],
+            child: Row(children: items.map((item) => Text(item)).toList()),
           ),
 
           SizedBox(height: AppSizes.spaceBetweenItems_72),

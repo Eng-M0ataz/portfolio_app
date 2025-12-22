@@ -1,6 +1,3 @@
-import 'package:portfolio_website/core/utils/Constants/device_type.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
 abstract class AppSizes {
   // padding and margin sizes
   static const double paddingXs_4 = 4.0;
@@ -14,7 +11,8 @@ abstract class AppSizes {
   static const double paddingXl_32 = 32.0;
   static const double paddingXl_40 = 40.0;
   static const double padding_80 = 80.0;
-  static const double padding_214=214.0;
+  static const double padding_70 = 70.0;
+  static const double padding_214 = 214.0;
 
   // icon sizes
   static const double icon_8 = 8.0;
@@ -38,12 +36,16 @@ abstract class AppSizes {
   static const double font_12 = 12.0;
   static const double font_13 = 13.0;
   static const double font_14 = 14.0;
+  static const double font_15 = 15.0;
   static const double font_16 = 16.0;
   static const double font_18 = 18.0;
   static const double font_20 = 20.0;
   static const double font_24 = 24.0;
+  static const double font_22 = 22.0;
+  static const double font_27 = 27.0;
   static const double font_28 = 28.0;
   static const double font_30 = 30.0;
+  static const double font_32 = 32.0;
   static const double font_40 = 40.0;
   static const double font_48 = 48.0;
   static const double font_56 = 56.0;
@@ -98,7 +100,6 @@ abstract class AppSizes {
   static const double spaceBetweenItems_130 = 130.0;
   static const double spaceBetweenItems_140 = 140.0;
 
-
   static const double spaceBetweenItems_150 = 150.0;
 
   // Default Spacing Between Sections
@@ -122,14 +123,22 @@ abstract class AppSizes {
 
   // break points
 
-  static const List<Breakpoint> appBreakPoints = [
-    Breakpoint(start: 0, end: 450, name: DeviceType.mobile),
-    Breakpoint(start: 451, end: 800, name: DeviceType.tablet),
-    Breakpoint(start: 801, end: 1920, name: DeviceType.desktop),
-  ];
-  static const List<Breakpoint> appLandscapeBreakPoints = [
-    Breakpoint(start: 0, end: 1023, name: DeviceType.mobile),
-    Breakpoint(start: 1024, end: 1599, name: DeviceType.tablet),
-    Breakpoint(start: 1600, end: double.infinity, name: DeviceType.desktop),
-  ];
+  // static const List<Breakpoint> appBreakPoints = [
+  //   Breakpoint(start: 0, end: 480, name: DeviceType.mobile),
+  //   Breakpoint(start: 481, end: 1024, name: DeviceType.tablet),
+  //   Breakpoint(start: 1025, end: 1919, name: DeviceType.desktop),
+  //   Breakpoint(start: 1920, end: double.infinity, name: DeviceType.xlDesktop),
+  // ];
+  // static const List<Breakpoint> appLandscapeBreakPoints = [
+  //   Breakpoint(start: 0, end: 640, name: DeviceType.mobile),
+  //   Breakpoint(start: 641, end: 1024, name: DeviceType.tablet),
+  //   Breakpoint(start: 1025, end: 1919, name: DeviceType.desktop),
+  //   Breakpoint(start: 1920, end: double.infinity, name: DeviceType.xlDesktop),
+  // ];
+  // static const List<Condition<double>> conditionalValues = [
+  //   Condition.between(start: 0, end: 450, value: 375),
+  //   Condition.between(start: 451, end: 768, value: 600),
+  //   Condition.between(start: 769, end: 1024, value: 1024),
+  //   Condition.between(start: 1024, end: 1920, value: 1920),
+  // ];
 }

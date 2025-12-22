@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 
 class AppBarTextWidget extends StatelessWidget {
   const AppBarTextWidget({
@@ -18,12 +19,12 @@ class AppBarTextWidget extends StatelessWidget {
       child: Text(
         text,
         style: isHome!
-            ? Theme.of(
+            ? AppTextStyles.medium_20(
                 context,
-              ).textTheme.displayLarge!.copyWith(color: AppColorsDark.orange)
-            : Theme.of(
+              ).copyWith(color: AppColorsDark.orange)
+            : AppTextStyles.medium_20(
                 context,
-              ).textTheme.bodyMedium!.copyWith(color: AppColorsDark.grey_959),
+              ).copyWith(color: AppColorsDark.grey_959),
       ),
     );
   }

@@ -6,12 +6,17 @@ import 'package:portfolio_website/presentation/widgets/section_header.dart';
 import 'package:portfolio_website/presentation/widgets/services_grid_view.dart';
 
 class ServicesSection extends StatelessWidget {
-  const ServicesSection({super.key});
-
+  const ServicesSection({
+    super.key,
+    this.edgeInsetsGeometry = const EdgeInsets.symmetric(
+      horizontal: AppSizes.padding_80,
+    ),
+  });
+  final EdgeInsetsGeometry edgeInsetsGeometry;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSizes.padding_80),
+      padding: edgeInsetsGeometry,
       child: Column(
         children: [
           SectionHeader(
@@ -20,7 +25,7 @@ class ServicesSection extends StatelessWidget {
                 'Lorem ipsum dolor sit amet consectetur. Imperdiet convallis blandit felis ligula aliquam',
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_80),
-          ServicesGridView(),
+          ServicesWidget(),
         ],
       ),
     );
