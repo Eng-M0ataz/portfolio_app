@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
-import 'package:portfolio_website/presentation/widgets/intro_widget.dart';
-import 'package:portfolio_website/presentation/widgets/personal_image.dart';
-import 'package:portfolio_website/presentation/widgets/taps_widget.dart';
+import 'package:portfolio_website/core/widgets/buttom_bar_section.dart';
+import 'package:portfolio_website/presentation/widgets/about_me_section.dart';
+import 'package:portfolio_website/presentation/widgets/contact_me_section.dart';
+import 'package:portfolio_website/presentation/widgets/service_section.dart';
+import 'package:portfolio_website/presentation/widgets/tablet/tablet_hero_intro_section.dart';
 
 class TabletLayout extends StatelessWidget {
   const TabletLayout({super.key});
@@ -12,32 +12,39 @@ class TabletLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: SizedBox(
-      //   width: 150,
-      //   child: IconButton(onPressed: () {}, icon: Icon(Icons.abc)),
-      // ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 40),
-              SvgPicture.asset(Assets.assetsImagesLOGO),
-              SizedBox(height: AppSizes.spaceBetweenItems_16),
-              TapsWidget(),
-              SizedBox(height: AppSizes.spaceBetweenItems_16),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(child: const IntroWidget()),
-                  Flexible(child: PersonalImagWidget()),
-                ],
+        child: Column(
+          children: [
+            const TabletHeroIntroSection(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSizes.paddingXxl_48,
+                vertical: AppSizes.paddingXxl_60,
               ),
-              SizedBox(height: AppSizes.spaceBetweenItems_16),
-            ],
-          ),
+            ),
+            ServicesSection(
+              padding: EdgeInsetsGeometry.symmetric(
+                horizontal: AppSizes.paddingXxl_48,
+                vertical: AppSizes.paddingXxl_60,
+              ),
+            ),
+            AboutMeSection(
+              padding: EdgeInsetsGeometry.symmetric(
+                horizontal: AppSizes.paddingXxl_48,
+                vertical: AppSizes.paddingXxl_60,
+              ),
+            ),
+            // to do Portfolio widget
+            ContactMeSection(
+              padding: EdgeInsetsGeometry.symmetric(
+                horizontal: AppSizes.paddingXxl_48,
+                vertical: AppSizes.paddingXxl_60,
+              ),
+            ),
+
+            BottomBarSection(
+              padding: EdgeInsetsGeometry.only(top: AppSizes.paddingXxl_60),
+            ),
+          ],
         ),
       ),
     );

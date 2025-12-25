@@ -3,8 +3,8 @@ import 'package:portfolio_website/core/config/theme/app_colors.dart'
     show AppColorsDark;
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
-class CustomElvatedButtonThem extends StatelessWidget {
-  const CustomElvatedButtonThem({super.key, required this.child});
+class CustomElevatedButtonThem extends StatelessWidget {
+  const CustomElevatedButtonThem({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {

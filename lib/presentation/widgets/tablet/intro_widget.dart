@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
-import 'package:portfolio_website/core/helpers/resposive_helper.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
-import 'package:portfolio_website/presentation/widgets/intro_action_buttons.dart';
-import 'package:portfolio_website/presentation/widgets/social_media_widget.dart';
-import 'package:portfolio_website/presentation/widgets/stats_info_widget.dart';
+import 'package:portfolio_website/core/widgets/intro_action_buttons.dart';
+import 'package:portfolio_website/core/widgets/social_media_widget.dart';
+import 'package:portfolio_website/core/widgets/stats_overview_widget.dart';
 
 class IntroWidget extends StatelessWidget {
   const IntroWidget({super.key});
@@ -41,11 +41,13 @@ class IntroWidget extends StatelessWidget {
               : AppSizes.spaceBetweenItems_24,
         ),
         IntroActionButtons(),
-        SizedBox(height: AppSizes.spaceBetweenItems_16),
-        Align(
-          alignment: AlignmentGeometry.centerLeft,
-          child: StatsInfoWidget(),
+        SizedBox(
+          height: isDesktop
+              ? AppSizes.spaceBetweenItems_56
+              : AppSizes.spaceBetweenItems_24,
         ),
+
+        Visibility(visible: isDesktop, child: const StatsOverviewWidget()),
       ],
     );
   }

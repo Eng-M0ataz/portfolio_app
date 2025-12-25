@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/core/helpers/resposive_helper.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/utils/constants/app_fonts.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 

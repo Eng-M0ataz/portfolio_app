@@ -10,14 +10,19 @@ abstract class AppSizes {
   static const double paddingLg_24 = 24.0;
   static const double paddingXl_32 = 32.0;
   static const double paddingXl_40 = 40.0;
+  static const double paddingXxl_48 = 48.0;
+  static const double paddingXxl_50 = 50.0;
+  static const double paddingXxl_60 = 60.0;
   static const double padding_80 = 80.0;
   static const double padding_70 = 70.0;
+  static const double padding_75 = 75.0;
   static const double padding_214 = 214.0;
 
   // icon sizes
   static const double icon_8 = 8.0;
   static const double icon_12 = 12.0;
   static const double icon_16 = 16.0;
+  static const double icon_20 = 20.0;
   static const double icon_24 = 24.0;
   static const double icon_32 = 32.0;
   static const double icon_40 = 40.0;
@@ -91,6 +96,7 @@ abstract class AppSizes {
   static const double spaceBetweenItems_48 = 48.0;
   static const double spaceBetweenItems_50 = 50.0;
   static const double spaceBetweenItems_56 = 56.0;
+  static const double spaceBetweenItems_60 = 60.0;
   static const double spaceBetweenItems_64 = 64.0;
   static const double spaceBetweenItems_72 = 72.0;
   static const double spaceBetweenItems_80 = 80.0;

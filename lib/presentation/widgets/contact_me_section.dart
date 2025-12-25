@@ -1,120 +1,103 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
-import 'package:portfolio_website/presentation/widgets/section_header.dart';
+import 'package:portfolio_website/core/helpers/app_texts_style.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
+import 'package:portfolio_website/core/localization/locale_keys.g.dart';
+import 'package:portfolio_website/core/utils/constants/sizes.dart';
+import 'package:portfolio_website/core/widgets/contact_me_tablet_and_desktop_layout.dart';
+import 'package:portfolio_website/core/widgets/custom_elevated_button.dart';
+import 'package:portfolio_website/core/widgets/elevated_button_custom_them.dart';
+import 'package:portfolio_website/core/widgets/section_header.dart';
+import 'package:portfolio_website/presentation/widgets/mobile/contact_me_mobile_layout.dart';
 
-import '../../core/localization/locale_keys.g.dart';
-import '../../core/utils/constants/sizes.dart' show AppSizes;
+class ContactMeSection extends StatefulWidget {
+  const ContactMeSection({super.key, required this.padding});
+  final EdgeInsetsGeometry padding;
 
-class ContactMeSection extends StatelessWidget {
-  const ContactMeSection({super.key});
+  @override
+  State<ContactMeSection> createState() => _ContactMeSectionState();
+}
+
+class _ContactMeSectionState extends State<ContactMeSection> {
+  late final TextEditingController nameController;
+  late final TextEditingController emailController;
+  late final TextEditingController phoneController;
+  late final TextEditingController serviceController;
+  late final TextEditingController timelineController;
+  late final TextEditingController projectDetailsController;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController();
+    emailController = TextEditingController();
+    phoneController = TextEditingController();
+    serviceController = TextEditingController();
+    timelineController = TextEditingController();
+    projectDetailsController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    serviceController.dispose();
+    timelineController.dispose();
+    projectDetailsController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = context.isMobile;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSizes.padding_214),
+      padding: widget.padding,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: AppSizes.spaceBetweenItems_24,
         children: [
           SectionHeader(
             sectionName: LocaleKeys.contact_me.tr(),
             description: LocaleKeys.cultivating_connections.tr(),
           ),
-          SizedBox(height: AppSizes.spaceBetweenItems_50),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  customTextField(hint: LocaleKeys.name.tr(), context: context),
-                  SizedBox(width: AppSizes.spaceBetweenItems_32),
-                  customTextField(
-                    hint: LocaleKeys.email.tr(),
-                    context: context,
-                  ),
-                ],
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return !context.isMobile
+                  ? ContactMeTabletAndDeskTopLayout(
+                      nameController: nameController,
+                      emailController: emailController,
+                      phoneController: phoneController,
+                      serviceController: serviceController,
+                      timelineController: timelineController,
+                      projectDetailsController: projectDetailsController,
+                    )
+                  : ContactMeMobileLayOut(
+                      nameController: nameController,
+                      emailController: emailController,
+                      phoneController: phoneController,
+                      serviceController: serviceController,
+                      timelineController: timelineController,
+                      projectDetailsController: projectDetailsController,
+                    );
+            },
+          ),
+          Align(
+            alignment: isMobile ? Alignment.center : Alignment.centerRight,
+            child: CustomElevatedButtonThem(
+              child: CustomElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  LocaleKeys.send.tr(),
+                  style: AppTextStyles.bold_16(
+                    context,
+                  ).copyWith(color: AppColorsDark.grey_959),
+                ),
               ),
-              SizedBox(height: AppSizes.spaceBetweenItems_32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  customTextField(
-                    hint: LocaleKeys.phone_number.tr(),
-                    context: context,
-                  ),
-                  SizedBox(width: AppSizes.spaceBetweenItems_32),
-                  customTextField(
-                    hint: LocaleKeys.service_of_interest.tr(),
-                    context: context,
-                  ),
-                ],
-              ),
-              SizedBox(height: AppSizes.spaceBetweenItems_32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customTextField(
-                    hint: LocaleKeys.timeline.tr(),
-                    context: context,
-                  ),
-                  SizedBox(width: AppSizes.spaceBetweenItems_32),
-                  Expanded(
-                    child: SizedBox(
-                      height: 162,
-                      child: TextField(
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColorsDark.grey_959,
-                        ),
-                        maxLines: 10,
-                        decoration: InputDecoration(
-                          hintText: LocaleKeys.project_details.tr(),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: AppSizes.spaceBetweenItems_32),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColorsDark.black,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: AppSizes.paddingXl_40,
-                        vertical: AppSizes.paddingMd_12,
-                      ),
-                      side: BorderSide(color: AppColorsDark.grey_959),
-                    ),
-
-                    onPressed: () {},
-                    child: Text(
-                      LocaleKeys.send.tr(),
-                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                        color: AppColorsDark.grey_959,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
-}
-
-Widget customTextField({required String hint, required BuildContext context}) {
-  return Expanded(
-    child: TextField(
-      style: Theme.of(
-        context,
-      ).textTheme.bodySmall!.copyWith(color: AppColorsDark.grey_959),
-      decoration: InputDecoration(hintText: hint, border: OutlineInputBorder()),
-    ),
-  );
 }

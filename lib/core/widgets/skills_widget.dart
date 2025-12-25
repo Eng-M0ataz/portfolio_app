@@ -4,8 +4,8 @@ import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
 import 'icon_percent_widget.dart';
 
-class PercentIconsRow extends StatelessWidget {
-  const PercentIconsRow({super.key});
+class SkillsWidget extends StatelessWidget {
+  const SkillsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

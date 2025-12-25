@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../core/config/theme/app_colors.dart';
-import '../../core/utils/constants/sizes.dart';
+import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
 class PortfolioCard extends StatelessWidget {
   final String imagePath;
@@ -19,7 +19,6 @@ class PortfolioCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 415,
-      height: 473,
       decoration: BoxDecoration(
         color: AppColorsDark.white,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusXxl_24),

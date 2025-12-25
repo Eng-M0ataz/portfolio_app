@@ -2,7 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
-import 'package:portfolio_website/presentation/widgets/portfolio_card.dart';
+import 'package:portfolio_website/core/widgets/portfolio_card.dart';
+
 import '../../core/utils/constants/app_assets.dart';
 import '../../core/utils/constants/sizes.dart';
 

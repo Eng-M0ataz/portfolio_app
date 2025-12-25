@@ -8,7 +8,7 @@ extension ResponsiveHelper on BuildContext {
   bool get isMobile => width <= DeviceType.mobile.deviceWidth;
   bool get isTablet =>
       width > DeviceType.mobile.deviceWidth &&
-      width <= DeviceType.desktop.deviceWidth;
+      width <= DeviceType.tablet.deviceWidth;
   bool get isDeskTop => width > DeviceType.tablet.deviceWidth;
 
   static double getResponsiveFontSize({

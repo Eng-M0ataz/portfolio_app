@@ -5,7 +5,7 @@ import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/custom_elevated_button.dart';
-import 'package:portfolio_website/core/widgets/elvated_button_custom_them.dart';
+import 'package:portfolio_website/core/widgets/elevated_button_custom_them.dart';
 
 class IntroActionButtons extends StatefulWidget {
   const IntroActionButtons({super.key});
@@ -29,7 +29,7 @@ class _IntroActionButtonsState extends State<IntroActionButtons> {
             style: AppTextStyles.medium_20(context),
           ),
         ),
-        CustomElvatedButtonThem(
+        CustomElevatedButtonThem(
           child: CustomElevatedButton(
             onPressed: () {},
             child: Text(

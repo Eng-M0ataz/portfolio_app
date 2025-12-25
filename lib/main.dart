@@ -16,7 +16,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: kReleaseMode,
       builder: (context) => EasyLocalization(
         supportedLocales: AppConstants.supportedLocales,
         path: AppConstants.assetsPath,

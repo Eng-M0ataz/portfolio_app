@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/core/helpers/resposive_helper.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/presentation/page/desktop_layout.dart';
 import 'package:portfolio_website/presentation/page/mobile_layout.dart';
 import 'package:portfolio_website/presentation/page/tablet_layout.dart';

@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:portfolio_website/core/utils/constants/app_assets.dart';
+import 'package:portfolio_website/core/utils/constants/sizes.dart';
+import 'package:portfolio_website/core/widgets/personal_image.dart';
+import 'package:portfolio_website/core/widgets/stats_overview_widget.dart';
+import 'package:portfolio_website/presentation/widgets/tablet/intro_widget.dart';
+import 'package:portfolio_website/presentation/widgets/tablet/tablet_app_bar.dart';
+
+class TabletHeroIntroSection extends StatelessWidget {
+  const TabletHeroIntroSection({super.key, required this.padding});
+
+  final EdgeInsetsGeometry padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(Assets.assetsImagesLOGO),
+          const SizedBox(height: AppSizes.spaceBetweenItems_32),
+          TabletAppBar(),
+          const SizedBox(height: AppSizes.spaceBetweenItems_32),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Flexible(child: IntroWidget()),
+              Flexible(child: PersonalImageWidget()),
+            ],
+          ),
+          const SizedBox(height: AppSizes.spaceBetweenItems_32),
+          const StatsOverviewWidget(),
+        ],
+      ),
+    );
+  }
+}

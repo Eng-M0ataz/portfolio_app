@@ -3,9 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
-import 'package:portfolio_website/core/helpers/resposive_helper.dart';
-
-import '../../core/utils/Constants/sizes.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
+import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
 class IconPercentWidget extends StatelessWidget {
   final IconData icon;

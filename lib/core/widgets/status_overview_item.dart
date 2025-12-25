@@ -3,9 +3,13 @@ import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
-class InfoItem extends StatelessWidget {
-  const InfoItem({super.key, required this.number, required this.text});
-  final String text;
+class StatusOverviewItem extends StatelessWidget {
+  const StatusOverviewItem({
+    super.key,
+    required this.number,
+    required this.label,
+  });
+  final String label;
   final int number;
 
   @override
@@ -13,6 +17,7 @@ class InfoItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
+      spacing: AppSizes.spaceBetweenItems_12,
       children: [
         TweenAnimationBuilder(
           tween: IntTween(begin: 0, end: number),
@@ -24,9 +29,8 @@ class InfoItem extends StatelessWidget {
             ).copyWith(color: AppColorsDark.orange),
           ),
         ),
-        SizedBox(height: AppSizes.spaceBetweenItems_12),
         Text(
-          text,
+          label,
           style: AppTextStyles.bold_16(
             context,
           ).copyWith(color: AppColorsDark.greyDFDF),

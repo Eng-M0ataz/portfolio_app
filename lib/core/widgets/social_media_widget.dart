@@ -13,11 +13,10 @@ class SocialMediaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
+      spacing: AppSizes.spaceBetweenItems_16,
       children: [
         SocialMediaItem(icon: FontAwesomeIcons.linkedin, onPressed: () {}),
-        const SizedBox(width: AppSizes.spaceBetweenItems_16),
         SocialMediaItem(icon: FontAwesomeIcons.github, onPressed: () {}),
-        const SizedBox(width: AppSizes.spaceBetweenItems_16),
         SocialMediaItem(icon: FontAwesomeIcons.whatsapp, onPressed: () {}),
       ],
     );
