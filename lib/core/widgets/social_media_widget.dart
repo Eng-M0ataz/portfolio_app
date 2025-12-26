@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/social_media_item.dart';
+import 'package:portfolio_website/presentation/viewModel/home_event.dart';
+import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 
 class SocialMediaWidget extends StatelessWidget {
   const SocialMediaWidget({
@@ -11,13 +14,35 @@ class SocialMediaWidget extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<HomeViewModel>();
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       spacing: AppSizes.spaceBetweenItems_16,
       children: [
-        SocialMediaItem(icon: FontAwesomeIcons.linkedin, onPressed: () {}),
-        SocialMediaItem(icon: FontAwesomeIcons.github, onPressed: () {}),
-        SocialMediaItem(icon: FontAwesomeIcons.whatsapp, onPressed: () {}),
+        SocialMediaItem(
+          icon: FontAwesomeIcons.linkedin,
+          onPressed: () {
+            viewModel.doIntent(
+              OpenLinkedinEvent(),
+            );
+          },
+        ),
+        SocialMediaItem(
+          icon: FontAwesomeIcons.github,
+          onPressed: () {
+            viewModel.doIntent(
+              OpenGithubEvent(),
+            );
+          },
+        ),
+        SocialMediaItem(
+          icon: FontAwesomeIcons.whatsapp,
+          onPressed: () {
+            viewModel.doIntent(
+              OpenWhatsAppEvent(),
+            );
+          },
+        ),
       ],
     );
   }

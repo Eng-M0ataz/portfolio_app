@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
@@ -10,6 +11,7 @@ import 'package:portfolio_website/core/widgets/intro_action_buttons.dart';
 import 'package:portfolio_website/core/widgets/personal_image.dart';
 import 'package:portfolio_website/core/widgets/social_media_widget.dart';
 import 'package:portfolio_website/core/widgets/stats_overview_widget.dart';
+import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 import 'package:portfolio_website/presentation/widgets/web/web_app_bar.dart';
 
 class WebHeroIntroSection extends StatelessWidget {
@@ -17,6 +19,8 @@ class WebHeroIntroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileData = context.read<HomeViewModel>().state.profileData;
+    
     return Padding(
       padding: const EdgeInsets.only(
         left: AppSizes.padding_80,
@@ -43,7 +47,7 @@ class WebHeroIntroSection extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    LocaleKeys.my_name.tr(),
+                    profileData?.name ?? LocaleKeys.my_name.tr(),
                     style: AppTextStyles.bold_28(
                       context,
                     ).copyWith(color: AppColorsDark.grey_959),

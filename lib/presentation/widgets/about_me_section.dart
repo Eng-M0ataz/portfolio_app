@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
@@ -8,6 +9,8 @@ import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/custom_elevated_button.dart';
 import 'package:portfolio_website/core/widgets/section_header.dart';
 import 'package:portfolio_website/core/widgets/skills_widget.dart';
+import 'package:portfolio_website/presentation/viewModel/home_event.dart';
+import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 
 class AboutMeSection extends StatelessWidget {
   const AboutMeSection({
@@ -15,6 +18,7 @@ class AboutMeSection extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(horizontal: AppSizes.padding_80),
   });
   final EdgeInsetsGeometry padding;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +32,9 @@ class AboutMeSection extends StatelessWidget {
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_24),
           CustomElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<HomeViewModel>().doIntent(DownloadCvEvent());
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: AppSizes.paddingMd_16,

@@ -30,5 +30,20 @@ abstract class  LocaleKeys {
   static const home = 'home';
   static const services = 'services';
   static const about_me = 'about_me';
+  static const skills = 'skills';
+  static const portfolio_title = 'portfolio_title';
+  static const failure_no_status_code_found = 'failure_no_status_code_found';
+  static const failure_connection_timeout = 'failure_connection_timeout';
+  static const failure_send_timeout = 'failure_send_timeout';
+  static const failure_receive_timeout = 'failure_receive_timeout';
+  static const failure_bad_certificate = 'failure_bad_certificate';
+  static const failure_connection_cancelled = 'failure_connection_cancelled';
+  static const failure_connection_error = 'failure_connection_error';
+  static const failure_unknown_error = 'failure_unknown_error';
+  static const failure_no_response = 'failure_no_response';
+  static const failure_resource_not_found = 'failure_resource_not_found';
+  static const failure_server_error = 'failure_server_error';
+  static const failure_no_code = 'failure_no_code';
+  static const failure_no_internet_connection = 'failure_no_internet_connection';
 
 }

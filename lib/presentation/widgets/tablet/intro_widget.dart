@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
@@ -10,12 +11,14 @@ import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/intro_action_buttons.dart';
 import 'package:portfolio_website/core/widgets/social_media_widget.dart';
 import 'package:portfolio_website/core/widgets/stats_overview_widget.dart';
+import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 
 class IntroWidget extends StatelessWidget {
   const IntroWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final profileData = context.read<HomeViewModel>().state.profileData;
     final isDesktop = context.isDeskTop;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +31,7 @@ class IntroWidget extends StatelessWidget {
           ),
         ),
         Text(
-          LocaleKeys.my_name.tr(),
+          profileData?.name ?? LocaleKeys.my_name.tr(),
           style: AppTextStyles.bold_28(
             context,
           ).copyWith(color: AppColorsDark.grey_959),

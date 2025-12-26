@@ -38,4 +38,6 @@ class Assets {
   /// Assets for assetsImagesVector
   /// assets/images/Vector.png
   static const String assetsImagesVector = "assets/images/Vector.png";
+
+  static const String assetsImageLogoDesign = "assets/images/logo_design.png";
 }

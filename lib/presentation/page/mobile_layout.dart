@@ -4,6 +4,7 @@ import 'package:portfolio_website/core/widgets/buttom_bar_section.dart';
 import 'package:portfolio_website/presentation/widgets/about_me_section.dart';
 import 'package:portfolio_website/presentation/widgets/contact_me_section.dart';
 import 'package:portfolio_website/presentation/widgets/mobile/mobile_hero_intro_section.dart';
+import 'package:portfolio_website/presentation/widgets/mobile/side_bar_widget.dart';
 import 'package:portfolio_website/presentation/widgets/service_section.dart';
 
 class MobileLayout extends StatefulWidget {
@@ -26,7 +27,7 @@ class _MobileLayoutState extends State<MobileLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(),
+      drawer:SideBarWidget(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

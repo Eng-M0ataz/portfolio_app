@@ -1,9 +1,15 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:portfolio_website/core/localization/locale_keys.g.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Failure {
+  Failure({required this.errorMessage, String? code})
+    : code = code ?? LocaleKeys.failure_no_status_code_found.tr();
+
   final String errorMessage;
   final String code;
-  Failure({required this.errorMessage, this.code = 'No Status Code Found'});
 }
 
 class ServerFailure extends Failure {
@@ -13,30 +19,31 @@ class ServerFailure extends Failure {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure(
-          errorMessage: "Connection timeout with API server.",
+          errorMessage: LocaleKeys.failure_connection_timeout.tr(),
         );
       case DioExceptionType.sendTimeout:
-        return ServerFailure(errorMessage: "Send timeout with API server.");
+        return ServerFailure(
+          errorMessage: LocaleKeys.failure_send_timeout.tr(),
+        );
       case DioExceptionType.receiveTimeout:
-        return ServerFailure(errorMessage: "Receive timeout with API server.");
+        return ServerFailure(
+          errorMessage: LocaleKeys.failure_receive_timeout.tr(),
+        );
       case DioExceptionType.badCertificate:
         return ServerFailure(
-          errorMessage:
-              "Connection to API server failed due to an invalid certificate.",
+          errorMessage: LocaleKeys.failure_bad_certificate.tr(),
         );
       case DioExceptionType.cancel:
         return ServerFailure(
-          errorMessage:
-              "Connection to API was cancelled. Please try again later.",
+          errorMessage: LocaleKeys.failure_connection_cancelled.tr(),
         );
       case DioExceptionType.connectionError:
         return ServerFailure(
-          errorMessage:
-              "Connection to API server failed due to an internet connection issue.",
+          errorMessage: LocaleKeys.failure_connection_error.tr(),
         );
       case DioExceptionType.unknown:
         return ServerFailure(
-          errorMessage: "Unexpected error occurred. Please try again later.",
+          errorMessage: LocaleKeys.failure_unknown_error.tr(),
         );
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(dioException.response);
@@ -45,22 +52,57 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromResponse(Response? response) {
     if (response == null) {
-      return ServerFailure(errorMessage: "No response received from server.");
+      return ServerFailure(errorMessage: LocaleKeys.failure_no_response.tr());
     }
 
     switch (response.statusCode) {
       case 404:
-        return ServerFailure(errorMessage: "Resource not found", code: '404');
+        return ServerFailure(
+          errorMessage: LocaleKeys.failure_resource_not_found.tr(),
+          code: '404',
+        );
       case 500:
         return ServerFailure(
-          errorMessage: "Server error. Please try again later.",
+          errorMessage: LocaleKeys.failure_server_error.tr(),
           code: '500',
         );
       default:
         return ServerFailure(
-          errorMessage: response.data["message"]?? response.data["error"],
-          code: response.data["code"].toString(),
+          errorMessage: response.data['message'] ?? response.data['error'],
+          code: response.data['code'].toString(),
         );
+    }
+  }
+}
+
+class SupabaseFailure extends Failure {
+  SupabaseFailure({required super.errorMessage, super.code});
+
+  factory SupabaseFailure.fromAuthException({
+    required AuthException exception,
+  }) {
+    return SupabaseFailure(
+      errorMessage: exception.message,
+      code: exception.statusCode?.toString() ?? LocaleKeys.failure_no_code.tr(),
+    );
+  }
+
+  factory SupabaseFailure.fromPostgrestException({
+    required PostgrestException exception,
+  }) {
+    return SupabaseFailure(
+      errorMessage: exception.message,
+      code: exception.code ?? LocaleKeys.failure_no_code.tr(),
+    );
+  }
+
+  factory SupabaseFailure.fromException({required Exception exception}) {
+    if (exception is SocketException) {
+      return SupabaseFailure(
+        errorMessage: LocaleKeys.failure_no_internet_connection.tr(),
+      );
+    } else {
+      return SupabaseFailure(errorMessage: exception.toString());
     }
   }
 }

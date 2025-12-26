@@ -25,5 +25,20 @@
   "send": "Send",
   "home": "Home",
   "services": "Services",
-  "about_me": "About Me"
+  "about_me": "About Me",
+  "skills": "Skills",
+  "portfolio_title": "PORTFOLIO",
+  "failure_no_status_code_found": "No Status Code Found",
+  "failure_connection_timeout": "Connection timeout with API server",
+  "failure_send_timeout": "Send timeout with API server",
+  "failure_receive_timeout": "Receive timeout with API server",
+  "failure_bad_certificate": "Connection to API server failed due to an invalid certificate",
+  "failure_connection_cancelled": "Connection to API was cancelled. Please try again later",
+  "failure_connection_error": "Connection to API server failed due to an internet connection issue",
+  "failure_unknown_error": "Unexpected error occurred. Please try again later",
+  "failure_no_response": "No response received from server",
+  "failure_resource_not_found": "Resource not found",
+  "failure_server_error": "Server error. Please try again later",
+  "failure_no_code": "No Code",
+  "failure_no_internet_connection": "No internet connection"
 }
