@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/phone_email_widget.dart';
-import 'package:portfolio_website/domain/entity/profile_data_entity.dart';
 import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 
 class ContactInfo extends StatelessWidget {
@@ -12,18 +11,17 @@ class ContactInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileDataEntity profileData = context
-        .read<HomeViewModel>()
-        .state
-        .profileData!;
+    final profileData = context.read<HomeViewModel>().state.profileData!;
     List<Widget> contacts = [
-      PhoneEmailWidget(text: profileData.email!, icon: Icons.email_outlined),
       PhoneEmailWidget(
-        text: profileData.socialLinks?.whatsapp ?? '',
+        text: profileData.personalInfo.email,
+        icon: Icons.email_outlined,
+      ),
+      PhoneEmailWidget(
+        text: profileData.personalInfo.whatsappNumber,
         icon: Icons.phone_outlined,
       ),
     ];
-
     return isDesktop
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,

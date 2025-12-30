@@ -21,26 +21,20 @@ class SocialMediaWidget extends StatelessWidget {
       children: [
         SocialMediaItem(
           icon: FontAwesomeIcons.linkedin,
-          onPressed: () {
-            viewModel.doIntent(
-              OpenLinkedinEvent(),
-            );
+          onPressed: () async {
+            await viewModel.doIntent(OpenLinkedinEvent());
           },
         ),
         SocialMediaItem(
           icon: FontAwesomeIcons.github,
-          onPressed: () {
-            viewModel.doIntent(
-              OpenGithubEvent(),
-            );
+          onPressed: () async {
+            await viewModel.doIntent(OpenGithubEvent());
           },
         ),
         SocialMediaItem(
           icon: FontAwesomeIcons.whatsapp,
-          onPressed: () {
-            viewModel.doIntent(
-              OpenWhatsAppEvent(),
-            );
+          onPressed: () async {
+            await viewModel.doIntent(OpenWhatsAppEvent());
           },
         ),
       ],

@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const hi = 'hi';
   static const my_name = 'my_name';
   static const hire_me = 'hire_me';
@@ -44,6 +44,6 @@ abstract class  LocaleKeys {
   static const failure_resource_not_found = 'failure_resource_not_found';
   static const failure_server_error = 'failure_server_error';
   static const failure_no_code = 'failure_no_code';
-  static const failure_no_internet_connection = 'failure_no_internet_connection';
-
+  static const failure_no_internet_connection =
+      'failure_no_internet_connection';
 }

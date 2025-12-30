@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:portfolio_website/core/utils/constants/api_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -8,7 +10,7 @@ abstract class UrlWebService {
     if (await canLaunchUrl(uri)) {
       await launchUrl(
         uri,
-        mode: LaunchMode.platformDefault,
+        mode: LaunchMode.externalApplication,
         webOnlyWindowName: '_blank',
       );
     } else {
@@ -17,7 +19,9 @@ abstract class UrlWebService {
   }
 
   static Future<void> openWhatsApp(String phoneNumber) async {
-    final url = '${ApiConstants.whatsappUrl}$phoneNumber';
+    final cleanedPhoneNumber = phoneNumber.trim();
+    final url = '${ApiConstants.whatsappUrl}$cleanedPhoneNumber';
+    log('Opening WhatsApp for phone number: $url');
     await _launchInNewTab(url);
   }
 
@@ -35,6 +39,7 @@ abstract class UrlWebService {
   }
 
   static Future<void> downloadCv(String driveLink) async {
-    return await _launchInNewTab(driveLink);
+    final link = '${ApiConstants.downloadCvGoogleDrive}$driveLink';
+    return await _launchInNewTab(link);
   }
 }

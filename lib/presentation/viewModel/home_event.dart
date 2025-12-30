@@ -1,11 +1,9 @@
-import 'package:portfolio_website/data/model/input_model.dart';
-
 sealed class HomeEvent {}
 
 class FetchHomeDataEvent extends HomeEvent {
-  FetchHomeDataEvent({required this.inputModel});
+  FetchHomeDataEvent({required this.path});
 
-  final InputModel inputModel;
+  final String path;
 }
 
 class OpenWhatsAppEvent extends HomeEvent {}

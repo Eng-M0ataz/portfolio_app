@@ -10,7 +10,6 @@ import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/intro_action_buttons.dart';
 import 'package:portfolio_website/core/widgets/social_media_widget.dart';
-import 'package:portfolio_website/core/widgets/stats_overview_widget.dart';
 import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 
 class IntroWidget extends StatelessWidget {
@@ -31,7 +30,7 @@ class IntroWidget extends StatelessWidget {
           ),
         ),
         Text(
-          profileData?.name ?? LocaleKeys.my_name.tr(),
+          profileData?.personalInfo.name ?? LocaleKeys.my_name.tr(),
           style: AppTextStyles.bold_28(
             context,
           ).copyWith(color: AppColorsDark.grey_959),
@@ -49,8 +48,6 @@ class IntroWidget extends StatelessWidget {
               ? AppSizes.spaceBetweenItems_56
               : AppSizes.spaceBetweenItems_24,
         ),
-
-        Visibility(visible: isDesktop, child: const StatsOverviewWidget()),
       ],
     );
   }

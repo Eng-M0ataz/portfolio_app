@@ -1,0 +1,20 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'project.g.dart';
+
+@JsonSerializable()
+class Project {
+  @JsonKey(name: 'project_name')
+  String? projectName;
+  String? category;
+  String? thumbnail;
+  List<String>? images;
+
+  Project({this.projectName, this.category, this.thumbnail, this.images});
+
+  factory Project.fromJson(Map<String, dynamic> json) {
+    return _$ProjectFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$ProjectToJson(this);
+}

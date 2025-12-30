@@ -3,6 +3,7 @@ import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/buttom_bar_section.dart';
 import 'package:portfolio_website/presentation/widgets/about_me_section.dart';
 import 'package:portfolio_website/presentation/widgets/contact_me_section.dart';
+import 'package:portfolio_website/presentation/widgets/portfolio_section.dart';
 import 'package:portfolio_website/presentation/widgets/service_section.dart';
 import 'package:portfolio_website/presentation/widgets/tablet/tablet_hero_intro_section.dart';
 
@@ -33,7 +34,7 @@ class TabletLayout extends StatelessWidget {
                 vertical: AppSizes.paddingXxl_60,
               ),
             ),
-            // to do Portfolio widget
+            PortfolioSection(),
             ContactMeSection(
               padding: EdgeInsetsGeometry.symmetric(
                 horizontal: AppSizes.paddingXxl_48,

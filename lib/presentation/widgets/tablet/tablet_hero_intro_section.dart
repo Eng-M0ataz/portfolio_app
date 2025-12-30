@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/personal_image.dart';
@@ -19,7 +18,11 @@ class TabletHeroIntroSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset(Assets.assetsImagesLOGO),
+          Image.asset(
+            Assets.assetsImagesLogoDesign,
+            cacheHeight: 80,
+            cacheWidth: 80,
+          ),
           const SizedBox(height: AppSizes.spaceBetweenItems_32),
           TabletAppBar(),
           const SizedBox(height: AppSizes.spaceBetweenItems_32),

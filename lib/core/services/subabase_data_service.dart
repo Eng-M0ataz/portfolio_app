@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:portfolio_website/core/errors/failure.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'data_base_services.dart';
@@ -16,13 +15,7 @@ class SupabaseDataService implements DatabaseService {
     required String path,
     String? docId,
   }) async {
-    try {
-      await _supabaseClient.from(path).insert(data);
-    } on PostgrestException catch (e) {
-      throw SupabaseFailure.fromPostgrestException(exception: e);
-    } on Exception catch (e) {
-      throw SupabaseFailure.fromException(exception: e);
-    }
+    await _supabaseClient.from(path).insert(data);
   }
 
   @override
@@ -31,34 +24,17 @@ class SupabaseDataService implements DatabaseService {
     required String columnValue,
     required String columnName,
   }) async {
-    try {
-      final Map<String, dynamic> data = await _supabaseClient
-          .from(path)
-          .select()
-          .eq(columnName, columnValue)
-          .single();
-      return data;
-    } on PostgrestException catch (e) {
-      throw SupabaseFailure.fromPostgrestException(exception: e);
-    } on Exception catch (e) {
-      throw SupabaseFailure.fromException(exception: e);
-    }
+    final Map<String, dynamic> data = await _supabaseClient
+        .from(path)
+        .select()
+        .eq(columnName, columnValue)
+        .single();
+    return data;
   }
 
   @override
-  Future<List<Map<String, dynamic>>> fetchAllData({
-    required String path,
-  }) async {
-    try {
-      final List<Map<String, dynamic>> data = await _supabaseClient
-          .from(path)
-          .select();
-      return data;
-    } on PostgrestException catch (e) {
-      throw SupabaseFailure.fromPostgrestException(exception: e);
-    } on Exception catch (e) {
-      throw SupabaseFailure.fromException(exception: e);
-    }
+  Future<Map<String, dynamic>> fetchAllData({required String path}) async {
+    return await _supabaseClient.from(path).select().single();
   }
 
   @override
@@ -67,18 +43,12 @@ class SupabaseDataService implements DatabaseService {
     required String columnName,
     required String columnValue,
   }) async {
-    try {
-      final Map<String, dynamic> data = await _supabaseClient
-          .from(path)
-          .select()
-          .eq(columnName, columnValue)
-          .single();
-      return data;
-    } on PostgrestException catch (e) {
-      throw SupabaseFailure.fromPostgrestException(exception: e);
-    } on Exception catch (e) {
-      throw SupabaseFailure.fromException(exception: e);
-    }
+    final Map<String, dynamic> data = await _supabaseClient
+        .from(path)
+        .select()
+        .eq(columnName, columnValue)
+        .single();
+    return data;
   }
 
   Future<List<Map<String, dynamic>>> fetchDataWithSortAndOrder({
@@ -88,18 +58,12 @@ class SupabaseDataService implements DatabaseService {
     required String orderColumn,
     required bool ascending,
   }) async {
-    try {
-      final List<Map<String, dynamic>> data = await _supabaseClient
-          .from(path)
-          .select()
-          .eq(columnName, columnValue)
-          .order(orderColumn, ascending: ascending);
-      return data;
-    } on PostgrestException catch (e) {
-      throw SupabaseFailure.fromPostgrestException(exception: e);
-    } on Exception catch (e) {
-      throw SupabaseFailure.fromException(exception: e);
-    }
+    final List<Map<String, dynamic>> data = await _supabaseClient
+        .from(path)
+        .select()
+        .eq(columnName, columnValue)
+        .order(orderColumn, ascending: ascending);
+    return data;
   }
 
   @override
@@ -109,17 +73,11 @@ class SupabaseDataService implements DatabaseService {
     required String columnName,
     required int limit,
   }) async {
-    try {
-      final List<Map<String, dynamic>> response = await _supabaseClient
-          .from(path)
-          .select(columnName)
-          .eq(columnName, columnValue)
-          .limit(limit);
-      return response.isNotEmpty;
-    } on PostgrestException catch (e) {
-      throw SupabaseFailure.fromPostgrestException(exception: e);
-    } on Exception catch (e) {
-      throw SupabaseFailure.fromException(exception: e);
-    }
+    final List<Map<String, dynamic>> response = await _supabaseClient
+        .from(path)
+        .select(columnName)
+        .eq(columnName, columnValue)
+        .limit(limit);
+    return response.isNotEmpty;
   }
 }

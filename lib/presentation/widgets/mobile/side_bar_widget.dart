@@ -22,10 +22,17 @@ class SideBarWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                fit:  FlexFit.loose,
-                child: Image.asset(
-                  Assets.assetsImageLogoDesign,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppSizes.paddingXl_32,
+                ),
+                child: Align(
+                  alignment: AlignmentGeometry.center,
+                  child: Image.asset(
+                    Assets.assetsImagesLogoDesign,
+                    cacheHeight: 80,
+                    cacheWidth: 80,
+                  ),
                 ),
               ),
               const SizedBox(height: AppSizes.paddingSm_8),

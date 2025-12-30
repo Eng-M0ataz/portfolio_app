@@ -1,12 +1,11 @@
-class Skill {
-  final String? icon;
-  final String? title;
-  final double? percentage;
+class SkillEntity {
+  final String icon;
+  final String title;
+  final double percentage;
 
-  Skill({
-    this.icon,
-    this.title,
-    this.percentage,
+  SkillEntity({
+    required this.icon,
+    required this.title,
+    required this.percentage,
   });
 }
-

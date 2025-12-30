@@ -8,7 +8,7 @@ import 'package:portfolio_website/domain/entity/service.dart';
 
 class ServicesGridViewItem extends StatelessWidget {
   const ServicesGridViewItem({super.key, required this.service});
-  final Service service;
+  final ServicesItemEntity service;
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,13 @@ class ServicesGridViewItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CachedNetworkImage(
-            imageUrl: service.photo!,
+            imageUrl: service.photo,
             errorWidget: (context, url, error) => const Icon(Icons.error),
             placeholder: (context, url) => const CircularProgressIndicator(),
           ),
-
           const SizedBox(height: AppSizes.spaceBetweenItems_16),
           Text(
-            service.name!,
+            service.name,
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
@@ -36,7 +35,7 @@ class ServicesGridViewItem extends StatelessWidget {
           ),
           const SizedBox(height: AppSizes.spaceBetweenItems_8),
           Text(
-            service.description!,
+            service.description,
             textAlign: TextAlign.center,
             maxLines: 10,
             overflow: TextOverflow.ellipsis,

@@ -13,7 +13,7 @@ class StatsOverviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileData = context.read<HomeViewModel>().state.profileData;
-    final stats = profileData?.stats;
+    final experience = profileData?.experience;
 
     final isDeskTop = context.isMobile;
     return HoverContainer(
@@ -23,15 +23,15 @@ class StatsOverviewWidget extends StatelessWidget {
                 spacing: AppSizes.spaceBetweenItems_12,
                 children: [
                   StatusOverviewItem(
-                    number: stats?.experienceYears ?? 0,
+                    number: experience?.experiences ?? 0,
                     label: "Experiences",
                   ),
                   StatusOverviewItem(
-                    number: stats?.projectsNumber ?? 0,
+                    number: experience?.projectsNumber ?? 0,
                     label: "Project done",
                   ),
                   StatusOverviewItem(
-                    number: stats?.happyClients ?? 0,
+                    number: experience?.happyClients ?? 0,
                     label: "Happy Clients",
                   ),
                 ],
@@ -41,17 +41,17 @@ class StatsOverviewWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   StatusOverviewItem(
-                    number: stats?.experienceYears ?? 0,
+                    number: experience?.experiences ?? 0,
                     label: "Experiences",
                   ),
                   CustomDivider(),
                   StatusOverviewItem(
-                    number: stats?.projectsNumber ?? 0,
+                    number: experience?.projectsNumber ?? 0,
                     label: "Project done",
                   ),
                   CustomDivider(),
                   StatusOverviewItem(
-                    number: stats?.happyClients ?? 0,
+                    number: experience?.happyClients ?? 0,
                     label: "Happy Clients",
                   ),
                 ],

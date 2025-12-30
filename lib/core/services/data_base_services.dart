@@ -11,7 +11,7 @@ abstract class DatabaseService {
     required String columnName,
   });
 
-  Future<List<Map<String, dynamic>>> fetchAllData({required String path});
+  Future<Map<String, dynamic>> fetchAllData({required String path});
 
   Future<bool> isDataExists({
     required String path,

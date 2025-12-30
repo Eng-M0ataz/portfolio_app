@@ -50,7 +50,7 @@ class ContactMeMobileLayOut extends StatelessWidget {
         CustomTextFormField(
           hintText: LocaleKeys.project_details.tr(),
           controller: projectDetailsController,
-          maxLines: 10,
+          maxLines: 5,
         ),
       ],
     );

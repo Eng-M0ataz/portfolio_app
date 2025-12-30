@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:portfolio_website/core/di/di.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
+import 'package:portfolio_website/core/utils/constants/api_constants.dart';
 import 'package:portfolio_website/core/utils/constants/app_routes.dart';
 import 'package:portfolio_website/core/widgets/personal_image.dart';
-import 'package:portfolio_website/data/model/input_model.dart';
 import 'package:portfolio_website/presentation/viewModel/home_event.dart';
 import 'package:portfolio_website/presentation/viewModel/home_state.dart';
 import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
@@ -28,17 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _loadData() async {
     if (!mounted) return;
 
-    // final viewModel = context.read<HomeViewModel>();
     final viewModel = getIt<HomeViewModel>();
-    await viewModel.doIntent(
-      FetchHomeDataEvent(
-        inputModel: InputModel(
-          path: 'detailed_profile',
-          columnName: 'id',
-          columnValue: '1',
-        ),
-      ),
-    );
+    await viewModel.doIntent(FetchHomeDataEvent(path: ApiConstants.path));
   }
 
   @override

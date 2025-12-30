@@ -1,68 +1,68 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
+import 'package:portfolio_website/domain/entity/project_entity.dart';
 
 class PortfolioCard extends StatelessWidget {
-  final String imagePath;
-  final String projectName;
-  final String category;
+  final ProjectEntity projectEntity;
 
-  const PortfolioCard({
-    super.key,
-    required this.imagePath,
-    required this.projectName,
-    required this.category,
-  });
+  const PortfolioCard({super.key, required this.projectEntity});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 415,
-      decoration: BoxDecoration(
-        color: AppColorsDark.white,
-        borderRadius: BorderRadius.circular(AppSizes.borderRadiusXxl_24),
-      ),
-      child: Column(
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppSizes.borderRadiusXxl_24),
-                topRight: Radius.circular(AppSizes.borderRadiusXxl_24),
-              ),
-              child: SvgPicture.asset(imagePath, fit: BoxFit.cover),
-            ),
-          ),
-          Container(
-            height: 58,
-            decoration: BoxDecoration(
-              color: AppColorsDark.grey_252525,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(AppSizes.borderRadiusXxl_24),
-                bottomRight: Radius.circular(AppSizes.borderRadiusXxl_24),
+    return AspectRatio(
+      aspectRatio: 284 / 338,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusXxl_24),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(AppSizes.borderRadiusXxl_24),
+                  topRight: Radius.circular(AppSizes.borderRadiusXxl_24),
+                ),
+                child: CachedNetworkImage(
+                  width: double.infinity,
+                  height: double.infinity,
+                  imageUrl: projectEntity.thumbnail,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingMd_16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  projectName,
-                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    color: AppColorsDark.greyc6C6,
-                  ),
+            Container(
+              height: 54,
+              decoration: BoxDecoration(
+                color: AppColorsDark.grey_252525,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(AppSizes.borderRadiusXxl_24),
+                  bottomRight: Radius.circular(AppSizes.borderRadiusXxl_24),
                 ),
-                Text(
-                  category,
-                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    color: AppColorsDark.greyc6C6,
+              ),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingMd_16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    projectEntity.projectName,
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: AppColorsDark.greyc6C6,
+                    ),
                   ),
-                ),
-              ],
+                  Text(
+                    projectEntity.category,
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: AppColorsDark.greyc6C6,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

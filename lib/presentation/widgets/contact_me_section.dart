@@ -51,7 +51,6 @@ class _ContactMeSectionState extends State<ContactMeSection> {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = context.isMobile;
     return Padding(
       padding: widget.padding,
       child: Column(
@@ -82,17 +81,14 @@ class _ContactMeSectionState extends State<ContactMeSection> {
                     );
             },
           ),
-          Align(
-            alignment: isMobile ? Alignment.center : Alignment.centerRight,
-            child: CustomElevatedButtonThem(
-              child: CustomElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  LocaleKeys.send.tr(),
-                  style: AppTextStyles.bold_16(
-                    context,
-                  ).copyWith(color: AppColorsDark.grey_959),
-                ),
+          CustomElevatedButtonThem(
+            child: CustomElevatedButton(
+              onPressed: () {},
+              child: Text(
+                LocaleKeys.send.tr(),
+                style: AppTextStyles.bold_16(
+                  context,
+                ).copyWith(color: AppColorsDark.grey_959),
               ),
             ),
           ),

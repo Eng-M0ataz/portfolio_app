@@ -26,7 +26,7 @@ class MobileHeroIntroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileData = context.read<HomeViewModel>().state.profileData;
+    final profileData = context.read<HomeViewModel>().state.profileData!;
 
     return Padding(
       padding: padding,
@@ -43,7 +43,7 @@ class MobileHeroIntroSection extends StatelessWidget {
             ),
           ),
           Text(
-            profileData?.name ?? LocaleKeys.my_name.tr(),
+            profileData.personalInfo.name,
             style: AppTextStyles.bold_28(
               context,
             ).copyWith(color: AppColorsDark.grey_959),

@@ -19,9 +19,13 @@ class Assets {
   /// assets/images/flutter-dev.svg
   static const String assetsImagesFlutterDev = "assets/images/flutter-dev.svg";
 
-  /// Assets for assetsImagesLOGO
-  /// assets/images/LOGO.svg
-  static const String assetsImagesLOGO = "assets/images/LOGO.svg";
+  /// Assets for assetsImagesFrame10
+  /// assets/images/Frame-10.png
+  static const String assetsImagesFrame10 = "assets/images/Frame-10.png";
+
+  /// Assets for assetsImagesLogoDesign
+  /// assets/images/logo_design.png
+  static const String assetsImagesLogoDesign = "assets/images/logo_design.png";
 
   /// Assets for assetsImagesMail
   /// assets/images/mail.svg
@@ -38,6 +42,4 @@ class Assets {
   /// Assets for assetsImagesVector
   /// assets/images/Vector.png
   static const String assetsImagesVector = "assets/images/Vector.png";
-
-  static const String assetsImageLogoDesign = "assets/images/logo_design.png";
 }

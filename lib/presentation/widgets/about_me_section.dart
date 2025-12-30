@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,14 +22,34 @@ class AboutMeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = context.read<HomeViewModel>().state.profileData!;
     return Padding(
       padding: padding,
       child: Column(
         children: [
           SectionHeader(
-            sectionName: LocaleKeys.about_me.tr(),
-            description:
-                'A software engineer, the modern-day architect of digital realms, navigates the ethereal landscapes of code, sculpting intangible structures that shape our technological world. With fingers poised over keyboards like virtuoso pianists, they compose symphonies of logic, their minds a labyrinth of algorithms and solutions.Their canvas is a screen, a vast expanse where lines of code dance in intricate patterns, weaving the fabric of programs and applications. Each keystroke is a brushstroke, crafting intricate architectures and breathing life into innovative designs.In this digital atelier, they don the mantle of problem solvers, confronting bugs and glitches like valiant knights in an ever-evolving quest for perfection. Debugging becomes a noble pursuit, unraveling the mysteries hidden within the tangled webs of code. designs.In this digital atelier.',
+            sectionName: data.aboutMe.title,
+            description: data.aboutMe.description,
+          ),
+          SizedBox(height: AppSizes.spaceBetweenItems_24),
+          Row(
+            spacing: AppSizes.spaceBetweenItems_150,
+            children: [
+              Expanded(
+                child: CachedNetworkImage(
+                  imageUrl: data.personalInfo.photo,
+                  width: 400,
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Text(
+                  data.aboutMe.aboutMe,
+                  style: AppTextStyles.medium_20(context),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_24),
           CustomElevatedButton(
@@ -54,7 +75,7 @@ class AboutMeSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_72),
-          SkillsWidget(),
+          SkillsWidget(skills: data.aboutMe.skills),
         ],
       ),
     );

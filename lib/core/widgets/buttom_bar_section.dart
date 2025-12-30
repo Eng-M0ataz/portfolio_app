@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/utils/constants/app_assets.dart';
@@ -29,7 +28,11 @@ class BottomBarSection extends StatelessWidget {
       decoration: const BoxDecoration(color: AppColorsDark.grey_252525),
       child: Column(
         children: [
-          SvgPicture.asset(Assets.assetsImagesLOGO),
+          Image.asset(
+            Assets.assetsImagesLogoDesign,
+            cacheHeight: 80,
+            cacheWidth: 80,
+          ),
           verticalSpace,
           NavigationLinks(isDesktop: isDesktop),
           verticalSpace,

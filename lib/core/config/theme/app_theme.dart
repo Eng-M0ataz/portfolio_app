@@ -9,6 +9,20 @@ abstract class AppThemeDark {
       brightness: Brightness.dark,
       useMaterial3: true,
       scaffoldBackgroundColor: AppColorsDark.black,
+      tabBarTheme: TabBarThemeData(
+        dividerColor: Colors.transparent,
+        indicatorColor: Colors.transparent,
+        indicatorSize: TabBarIndicatorSize.tab,
+        tabAlignment: TabAlignment.center,
+        dividerHeight: 0,
+        labelPadding: const EdgeInsets.symmetric(
+          horizontal: AppSizes.paddingXl_40,
+        ),
+        indicator: BoxDecoration(
+          color: AppColorsDark.orange,
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+        ),
+      ),
       appBarTheme: AppBarTheme(
         backgroundColor: AppColorsDark.white,
         foregroundColor: AppColorsDark.black,

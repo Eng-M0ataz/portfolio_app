@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/custom_row_text_form_filled.dart';
+import 'package:portfolio_website/core/widgets/custom_textform_field.dart';
 
 class ContactMeTabletAndDeskTopLayout extends StatelessWidget {
   const ContactMeTabletAndDeskTopLayout({
@@ -41,10 +42,14 @@ class ContactMeTabletAndDeskTopLayout extends StatelessWidget {
         ),
         CustomRowTextFiled(
           hintText1: LocaleKeys.timeline.tr(),
-          hintText2: LocaleKeys.project_details.tr(),
+          hintText2: 'country',
           firstController: timelineController,
           secondController: projectDetailsController,
-          secondMaxLines: 10,
+        ),
+        CustomTextFormField(
+          hintText: LocaleKeys.project_details.tr(),
+          controller: projectDetailsController,
+          maxLines: 5,
         ),
       ],
     );

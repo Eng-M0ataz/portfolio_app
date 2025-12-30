@@ -38,9 +38,7 @@ class _IntroActionButtonsState extends State<IntroActionButtons> {
         CustomElevatedButtonThem(
           child: CustomElevatedButton(
             onPressed: () async {
-              await viewModel.doIntent(
-                DownloadCvEvent(),
-              );
+              await viewModel.doIntent(DownloadCvEvent());
             },
             child: Text(
               LocaleKeys.download_cv.tr(),
