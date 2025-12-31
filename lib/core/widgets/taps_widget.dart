@@ -5,7 +5,9 @@ import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/widgets/app_bar_text_widget.dart';
 
 class TapsWidget extends StatelessWidget {
-  const TapsWidget({super.key});
+  const TapsWidget({super.key, required this.onTapItem});
+
+  final Function(int index) onTapItem;
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +15,23 @@ class TapsWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: context.isDeskTop ? 40 : 20,
       children: [
-        AppBarTextWidget(text: LocaleKeys.home.tr(), onTap: () {}),
-        AppBarTextWidget(text: LocaleKeys.services.tr(), onTap: () {}),
-        AppBarTextWidget(text: LocaleKeys.about_me.tr(), onTap: () {}),
-        AppBarTextWidget(text: LocaleKeys.portfolio.tr(), onTap: () {}),
-        AppBarTextWidget(text: LocaleKeys.contact_me.tr(), onTap: () {}),
+        AppBarTextWidget(text: LocaleKeys.home.tr(), onTap: () => onTapItem(0)),
+        AppBarTextWidget(
+          text: LocaleKeys.services.tr(),
+          onTap: () => onTapItem(1),
+        ),
+        AppBarTextWidget(
+          text: LocaleKeys.about_me.tr(),
+          onTap: () => onTapItem(2),
+        ),
+        AppBarTextWidget(
+          text: LocaleKeys.portfolio.tr(),
+          onTap: () => onTapItem(3),
+        ),
+        AppBarTextWidget(
+          text: LocaleKeys.contact_me.tr(),
+          onTap: () => onTapItem(4),
+        ),
       ],
     );
   }

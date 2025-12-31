@@ -10,7 +10,12 @@ class Project {
   final String? thumbnail;
   final List<String>? images;
 
-  Project({this.projectName, this.category, this.thumbnail, this.images});
+  Project({
+    this.projectName,
+    this.category,
+    this.thumbnail,
+    this.images,
+  });
 
   factory Project.fromJson(Map<String, dynamic> json) {
     return _$ProjectFromJson(json);

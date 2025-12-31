@@ -34,7 +34,7 @@ class SkillItem extends StatelessWidget {
             placeholder: (context, url) => CircularProgressIndicator(),
           ),
         ),
-        const SizedBox(height: AppSizes.spaceBetweenItems_8),
+         SizedBox(height: AppSizes.spaceBetweenItems_24),
         Text(
           '${(skillEntity.percentage * 100).toInt()}%',
           style: AppTextStyles.bold_24(

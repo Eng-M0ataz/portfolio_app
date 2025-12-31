@@ -40,5 +40,8 @@
   "failure_resource_not_found": "المورد غير موجود",
   "failure_server_error": "خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقاً",
   "failure_no_code": "لا يوجد رمز",
-  "failure_no_internet_connection": "لا يوجد اتصال بالإنترنت"
+  "failure_no_internet_connection": "لا يوجد اتصال بالإنترنت",
+  "about_the_project": "حول المشروع",
+  "live_preview": "معاينة مباشرة",
+  "view_code": "عرض الكود"
 }

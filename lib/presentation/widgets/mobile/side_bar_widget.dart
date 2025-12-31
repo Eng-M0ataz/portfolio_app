@@ -8,7 +8,9 @@ import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/presentation/widgets/mobile/side_bar_item.dart';
 
 class SideBarWidget extends StatelessWidget {
-  const SideBarWidget({super.key});
+  const SideBarWidget({super.key, required this.onTapItem});
+
+  final Function(int index) onTapItem;
 
   @override
   Widget build(BuildContext context) {
@@ -68,37 +70,31 @@ class SideBarWidget extends StatelessWidget {
                     SidebarItem(
                       text: LocaleKeys.home,
                       icon: Icons.home_rounded,
-                      onTap: () {},
+                      onTap: () => onTapItem(0),
                     ),
 
                     SidebarItem(
                       text: LocaleKeys.services,
                       icon: Icons.settings_suggest_rounded,
-                      onTap: () {},
+                      onTap: () => onTapItem(1),
                     ),
 
                     SidebarItem(
                       text: LocaleKeys.about_me,
                       icon: Icons.person_rounded,
-                      onTap: () {},
+                      onTap: () => onTapItem(2),
                     ),
 
                     SidebarItem(
                       text: LocaleKeys.portfolio,
                       icon: Icons.work_rounded,
-                      onTap: () {},
-                    ),
-
-                    SidebarItem(
-                      text: LocaleKeys.skills,
-                      icon: Icons.psychology_rounded,
-                      onTap: () {},
+                      onTap: () => onTapItem(3),
                     ),
 
                     SidebarItem(
                       text: LocaleKeys.contact_me,
                       icon: Icons.alternate_email_rounded,
-                      onTap: () {},
+                      onTap: () => onTapItem(4),
                     ),
                   ],
                 ),

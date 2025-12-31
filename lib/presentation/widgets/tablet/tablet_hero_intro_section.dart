@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/core/functions/navigate_to_sections.dart';
 import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/personal_image.dart';
@@ -7,7 +8,13 @@ import 'package:portfolio_website/presentation/widgets/tablet/intro_widget.dart'
 import 'package:portfolio_website/presentation/widgets/tablet/tablet_app_bar.dart';
 
 class TabletHeroIntroSection extends StatelessWidget {
-  const TabletHeroIntroSection({super.key, required this.padding});
+  const TabletHeroIntroSection({
+    super.key,
+    required this.padding,
+    required this.globalKeysList,
+  });
+
+  final List<GlobalKey> globalKeysList;
 
   final EdgeInsetsGeometry padding;
 
@@ -24,7 +31,15 @@ class TabletHeroIntroSection extends StatelessWidget {
             cacheWidth: 80,
           ),
           const SizedBox(height: AppSizes.spaceBetweenItems_32),
-          TabletAppBar(),
+          TabletAppBar(
+            onTapItem: (index) {
+              navigateToSections(
+                context: context,
+                globalKeyList: globalKeysList,
+                index: index,
+              );
+            },
+          ),
           const SizedBox(height: AppSizes.spaceBetweenItems_32),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,

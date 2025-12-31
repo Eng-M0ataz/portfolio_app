@@ -16,13 +16,21 @@ import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 import 'package:portfolio_website/presentation/widgets/web/web_app_bar.dart';
 
 class WebHeroIntroSection extends StatelessWidget {
-  const WebHeroIntroSection({super.key});
+  const WebHeroIntroSection({
+    super.key,
+    required this.homeKey,
+    required this.globalKeysList,
+  });
+
+  final GlobalKey homeKey;
+  final List<GlobalKey> globalKeysList;
 
   @override
   Widget build(BuildContext context) {
     final profileData = context.read<HomeViewModel>().state.profileData;
 
     return Padding(
+      key: homeKey,
       padding: const EdgeInsets.only(
         left: AppSizes.padding_80,
         right: AppSizes.padding_80,
@@ -31,7 +39,7 @@ class WebHeroIntroSection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          WebCustomAppBar(),
+          WebCustomAppBar(globalKeysList: globalKeysList ),
           SizedBox(height: AppSizes.spaceBetweenItems_130),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,

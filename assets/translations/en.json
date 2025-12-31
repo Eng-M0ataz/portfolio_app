@@ -40,5 +40,8 @@
   "failure_resource_not_found": "Resource not found",
   "failure_server_error": "Server error. Please try again later",
   "failure_no_code": "No Code",
-  "failure_no_internet_connection": "No internet connection"
+  "failure_no_internet_connection": "No internet connection",
+  "about_the_project": "About the project",
+  "live_preview": "Live Preview",
+  "view_code": "View Code"
 }

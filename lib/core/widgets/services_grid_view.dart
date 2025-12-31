@@ -21,7 +21,7 @@ class ServicesGridView extends StatelessWidget {
       mainAxisSpacing: isDesktop
           ? AppSizes.paddingXl_40
           : isTablet
-          ? AppSizes.paddingXl_40
+          ? AppSizes.paddingLg_24
           : AppSizes.paddingMd_16,
       crossAxisSpacing: AppSizes.paddingXl_40,
       shrinkWrap: true,
