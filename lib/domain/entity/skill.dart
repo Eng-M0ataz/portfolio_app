@@ -1,10 +1,10 @@
 class SkillEntity {
-  final String icon;
+  final String image;
   final String title;
   final double percentage;
 
   SkillEntity({
-    required this.icon,
+    required this.image,
     required this.title,
     required this.percentage,
   });

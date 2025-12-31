@@ -14,10 +14,10 @@ class ServicesGridView extends StatelessWidget {
     final isTablet = context.isTablet;
     return MasonryGridView.count(
       crossAxisCount: isDesktop
-          ? 4
-          : isTablet
           ? 3
-          : 2,
+          : isTablet
+          ? 2
+          : 1,
       mainAxisSpacing: isDesktop
           ? AppSizes.paddingXl_40
           : isTablet

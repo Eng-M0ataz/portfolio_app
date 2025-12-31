@@ -54,7 +54,7 @@ extension ProjectModelMapper on Project {
 extension SkillModelMapper on Skill {
   SkillEntity toSkillEntity() {
     return SkillEntity(
-      icon: '',
+      image: image ?? '',
       title: name ?? '',
       percentage: (percent ?? 0).toDouble(),
     );
@@ -74,7 +74,11 @@ extension AboutMeModelMapper on AboutMe {
 
 extension ServicesListModelMapper on ServicesList {
   ServicesItemEntity toEntity() {
-    return ServicesItemEntity(description: '', name: '', photo: '');
+    return ServicesItemEntity(
+      description: description ?? '',
+      name: name ?? '',
+      photo: photo ?? '',
+    );
   }
 }
 

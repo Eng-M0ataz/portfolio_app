@@ -5,10 +5,10 @@ part 'project.g.dart';
 @JsonSerializable()
 class Project {
   @JsonKey(name: 'project_name')
-  String? projectName;
-  String? category;
-  String? thumbnail;
-  List<String>? images;
+  final String? projectName;
+  final String? category;
+  final String? thumbnail;
+  final List<String>? images;
 
   Project({this.projectName, this.category, this.thumbnail, this.images});
 

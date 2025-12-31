@@ -4,10 +4,10 @@ part 'services_list.g.dart';
 
 @JsonSerializable()
 class ServicesList {
-  int? id;
-  String? name;
-  String? description;
-  String? photo;
+  final int? id;
+  final String? name;
+  final String? description;
+  final String? photo;
 
   ServicesList({this.id, this.name, this.description, this.photo});
 

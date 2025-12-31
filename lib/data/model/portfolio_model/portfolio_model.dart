@@ -11,14 +11,14 @@ part 'portfolio_model.g.dart';
 @JsonSerializable()
 class PortfolioModel {
   @JsonKey(name: 'personal_info')
-  PersonalInfo? personalInfo;
+  final PersonalInfo? personalInfo;
   @JsonKey(name: 'experience')
-  Experience? experience;
+  final Experience? experience;
   @JsonKey(name: 'about_me')
-  AboutMe? aboutMe;
+  final AboutMe? aboutMe;
   @JsonKey(name: 'services')
-  Services? services;
-  List<Project>? projects;
+  final Services? services;
+  final List<Project>? projects;
 
   PortfolioModel({
     this.personalInfo,

@@ -4,13 +4,13 @@ part 'experience.g.dart';
 
 @JsonSerializable()
 class Experience {
-  int? id;
+  final int? id;
   @JsonKey(name: 'projects_number')
-  int? projectsNumber;
+  final int? projectsNumber;
   @JsonKey(name: 'happy_clients')
-  int? happyClients;
+  final int? happyClients;
   @JsonKey(name: 'Experiences')
-  int? experiences;
+  final int? experiences;
 
   Experience({
     this.id,

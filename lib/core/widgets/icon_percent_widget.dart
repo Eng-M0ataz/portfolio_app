@@ -18,7 +18,7 @@ class SkillItem extends StatelessWidget {
     return Column(
       children: [
         CircularPercentIndicator(
-          radius: isDeskTop ? 65 : 35,
+          radius: isDeskTop ? 55 : 35,
           lineWidth: 6,
           percent: skillEntity.percentage,
           animation: true,
@@ -27,7 +27,10 @@ class SkillItem extends StatelessWidget {
           progressColor: AppColorsDark.orange,
           circularStrokeCap: CircularStrokeCap.round,
           center: CachedNetworkImage(
-            imageUrl: skillEntity.icon,
+            imageUrl: skillEntity.image,
+            color: AppColorsDark.grey_959595,
+            width: isDeskTop ? 48 : 30,
+            height: isDeskTop ? 48 : 30,
             placeholder: (context, url) => CircularProgressIndicator(),
           ),
         ),

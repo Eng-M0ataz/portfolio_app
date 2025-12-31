@@ -6,11 +6,11 @@ part 'about_me.g.dart';
 
 @JsonSerializable()
 class AboutMe {
-  String? title;
-  String? description;
+  final String? title;
+  final String? description;
   @JsonKey(name: 'about_me')
-  String? aboutMe;
-  List<Skill>? skills;
+  final String? aboutMe;
+  final List<Skill>? skills;
 
   AboutMe({this.title, this.description, this.skills, this.aboutMe});
 

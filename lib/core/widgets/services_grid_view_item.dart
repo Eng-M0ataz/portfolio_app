@@ -27,8 +27,8 @@ class ServicesGridViewItem extends StatelessWidget {
           Text(
             service.name,
             textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+            maxLines: 3,
+            overflow: TextOverflow.fade,
             style: AppTextStyles.bold_24(
               context,
             ).copyWith(color: AppColorsDark.orange),
@@ -37,8 +37,6 @@ class ServicesGridViewItem extends StatelessWidget {
           Text(
             service.description,
             textAlign: TextAlign.center,
-            maxLines: 10,
-            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.medium_20(
               context,
             ).copyWith(color: AppColorsDark.grey_5757),

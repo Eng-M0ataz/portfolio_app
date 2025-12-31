@@ -4,8 +4,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:portfolio_website/core/di/di.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/utils/constants/api_constants.dart';
+import 'package:portfolio_website/core/utils/constants/app_assets.dart';
 import 'package:portfolio_website/core/utils/constants/app_routes.dart';
-import 'package:portfolio_website/core/widgets/personal_image.dart';
 import 'package:portfolio_website/presentation/viewModel/home_event.dart';
 import 'package:portfolio_website/presentation/viewModel/home_state.dart';
 import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
@@ -76,7 +76,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 SizedBox(
                   width: imageSize,
                   height: imageSize,
-                  child: ClipOval(child: PersonalImageWidget()),
+                  child: ClipOval(
+                    child: Image.asset(Assets.assetsImagesLogoDesign),
+                  ),
                 ),
               ],
             ),

@@ -4,10 +4,11 @@ part 'skill.g.dart';
 
 @JsonSerializable()
 class Skill {
-  String? name;
-  int? percent;
+  final String? name;
+  final String? image;
+  final int? percent;
 
-  Skill({this.name, this.percent});
+  Skill({this.name, this.percent, this.image});
 
   factory Skill.fromJson(Map<String, dynamic> json) => _$SkillFromJson(json);
 

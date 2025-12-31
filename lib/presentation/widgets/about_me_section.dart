@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,26 +29,6 @@ class AboutMeSection extends StatelessWidget {
           SectionHeader(
             sectionName: data.aboutMe.title,
             description: data.aboutMe.description,
-          ),
-          SizedBox(height: AppSizes.spaceBetweenItems_24),
-          Row(
-            spacing: AppSizes.spaceBetweenItems_150,
-            children: [
-              Expanded(
-                child: CachedNetworkImage(
-                  imageUrl: data.personalInfo.photo,
-                  width: 400,
-                  alignment: Alignment.centerLeft,
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Text(
-                  data.aboutMe.aboutMe,
-                  style: AppTextStyles.medium_20(context),
-                ),
-              ),
-            ],
           ),
           SizedBox(height: AppSizes.spaceBetweenItems_24),
           CustomElevatedButton(

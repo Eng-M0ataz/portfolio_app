@@ -4,18 +4,18 @@ part 'personal_info.g.dart';
 
 @JsonSerializable()
 class PersonalInfo {
-  int? id;
-  String? name;
-  String? photo;
-  String? email;
+  final int? id;
+  final String? name;
+  final String? photo;
+  final String? email;
   @JsonKey(name: 'github_link')
-  String? githubLink;
+  final String? githubLink;
   @JsonKey(name: 'cv_link')
-  String? cvLink;
+  final String? cvLink;
   @JsonKey(name: 'linkedin_link')
-  String? linkedinLink;
+  final String? linkedinLink;
   @JsonKey(name: 'whatsapp_number')
-  String? whatsappNumber;
+  final String? whatsappNumber;
 
   PersonalInfo({
     this.id,
