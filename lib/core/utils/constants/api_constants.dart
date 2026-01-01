@@ -7,4 +7,6 @@ abstract class ApiConstants {
   static const String whatsappUrl = 'https://wa.me/';
   static const String supabaseUrlKey = 'SUPABASE_URL';
   static const String supabaseAnonKeyKey = 'SUPABASE_ANON_KEY';
+  static const String contactMeRequest = 'contact_me_request';
+
 }

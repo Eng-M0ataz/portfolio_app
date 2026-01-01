@@ -1,18 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/core/config/theme/app_colors.dart';
-import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/contact_me_tablet_and_desktop_layout.dart';
-import 'package:portfolio_website/core/widgets/custom_elevated_button.dart';
+import 'package:portfolio_website/core/widgets/custom_elevated_button_bloc_consumer.dart';
 import 'package:portfolio_website/core/widgets/elevated_button_custom_them.dart';
 import 'package:portfolio_website/core/widgets/section_header.dart';
 import 'package:portfolio_website/presentation/widgets/mobile/contact_me_mobile_layout.dart';
 
 class ContactMeSection extends StatefulWidget {
   const ContactMeSection({super.key, required this.padding});
+
   final EdgeInsetsGeometry padding;
 
   @override
@@ -25,7 +24,11 @@ class _ContactMeSectionState extends State<ContactMeSection> {
   late final TextEditingController phoneController;
   late final TextEditingController serviceController;
   late final TextEditingController timelineController;
+  late final TextEditingController countryController;
   late final TextEditingController projectDetailsController;
+  late final GlobalKey<FormState> mobileFormKey;
+  late final GlobalKey<FormState> formKey;
+
 
   @override
   void initState() {
@@ -35,18 +38,9 @@ class _ContactMeSectionState extends State<ContactMeSection> {
     phoneController = TextEditingController();
     serviceController = TextEditingController();
     timelineController = TextEditingController();
+    countryController = TextEditingController();
     projectDetailsController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    serviceController.dispose();
-    timelineController.dispose();
-    projectDetailsController.dispose();
-    super.dispose();
+    formKey = GlobalKey<FormState>();
   }
 
   @override
@@ -69,7 +63,9 @@ class _ContactMeSectionState extends State<ContactMeSection> {
                       phoneController: phoneController,
                       serviceController: serviceController,
                       timelineController: timelineController,
+                      countryController: countryController,
                       projectDetailsController: projectDetailsController,
+                      formKey: formKey,
                     )
                   : ContactMeMobileLayOut(
                       nameController: nameController,
@@ -77,19 +73,23 @@ class _ContactMeSectionState extends State<ContactMeSection> {
                       phoneController: phoneController,
                       serviceController: serviceController,
                       timelineController: timelineController,
+                      countryController: countryController,
                       projectDetailsController: projectDetailsController,
+                      formKey: formKey,
                     );
             },
           ),
+
           CustomElevatedButtonThem(
-            child: CustomElevatedButton(
-              onPressed: () {},
-              child: Text(
-                LocaleKeys.send.tr(),
-                style: AppTextStyles.bold_16(
-                  context,
-                ).copyWith(color: AppColorsDark.grey_959),
-              ),
+            child: CustomElevatedButtonBlocConsumer(
+              nameController: nameController,
+              emailController: emailController,
+              phoneController: phoneController,
+              serviceController: serviceController,
+              countryController: countryController,
+              projectDetailsController: projectDetailsController,
+              timelineController: timelineController,
+              formKey: formKey,
             ),
           ),
         ],

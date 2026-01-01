@@ -43,5 +43,19 @@
   "failure_no_internet_connection": "No internet connection",
   "about_the_project": "About the project",
   "live_preview": "Live Preview",
-  "view_code": "View Code"
+  "view_code": "View Code",
+  "validation_name_required": "Name is required!",
+  "validation_name_invalid": "This Name is not valid",
+  "validation_email_required": "Email is required!",
+  "validation_email_invalid": "This Email is not valid",
+  "validation_phone_required": "Phone number is required!",
+  "validation_phone_invalid": "This Phone number is not valid",
+  "validation_timeline_required": "Timeline is required!",
+  "validation_country_required": "Country is required!",
+  "validation_service_required": "Service of interest is required!",
+  "validation_project_details_required": "Project details are required!",
+  "validation_project_details_min_length": "Please provide more details (at least 20 characters)",
+  "country": "Country",
+  "ok": "OK",
+  "message_sent_successfully": "Message sent successfully"
 }

@@ -2,15 +2,16 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:portfolio_website/core/functions/api_results.dart';
 import 'package:portfolio_website/core/services/url_web_service.dart';
+import 'package:portfolio_website/data/model/input_model/contact_request.dart';
 import 'package:portfolio_website/domain/entity/portfolio_entity.dart';
 import 'package:portfolio_website/domain/repository/home_repo.dart';
-
-import 'home_event.dart';
-import 'home_state.dart';
+import 'package:portfolio_website/presentation/viewModel/home_event.dart';
+import 'package:portfolio_website/presentation/viewModel/home_state.dart';
 
 @lazySingleton
 class HomeViewModel extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
+
   HomeViewModel(this._homeRepo) : super(const HomeState());
 
   Future<void> doIntent(HomeEvent event) async {
@@ -30,6 +31,31 @@ class HomeViewModel extends Cubit<HomeState> {
       case DownloadCvEvent():
         await _downloadCv();
         break;
+      case SendClientRequestEvent():
+        await _sendClientRequest(
+          contactRequest: event.contactRequest,
+          path: event.path,
+        );
+        break;
+    }
+  }
+
+  Future<void> _sendClientRequest({
+    required ContactRequest contactRequest,
+    required String path,
+  }) async {
+
+    emit(state.copyWith(isLoading: true, isSuccess: false));
+    final ApiResult<void> result = await _homeRepo.sendClientRequest(
+      path: path,
+      contactRequest: contactRequest,
+    );
+    switch (result) {
+      case ApiSuccessResult<void>():
+        emit(state.copyWith(isLoading: false, isSuccess: true));
+        break;
+      case ApiErrorResult<void>():
+        emit(state.copyWith(isLoading: false, failure: result.failure));
     }
   }
 

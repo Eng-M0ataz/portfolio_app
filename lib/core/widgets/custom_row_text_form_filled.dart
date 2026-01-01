@@ -11,6 +11,8 @@ class CustomRowTextFiled extends StatelessWidget {
     required this.hintText2,
     this.firstMaxLines = 1,
     this.secondMaxLines = 1,
+    this.firstValidator,
+    this.secondValidator,
   });
 
   final TextEditingController firstController;
@@ -19,6 +21,8 @@ class CustomRowTextFiled extends StatelessWidget {
   final int secondMaxLines;
   final String hintText1;
   final String hintText2;
+  final String? Function(String?)? firstValidator;
+  final String? Function(String?)? secondValidator;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,7 @@ class CustomRowTextFiled extends StatelessWidget {
             hintText: hintText1,
             controller: firstController,
             maxLines: firstMaxLines,
+            validator: firstValidator,
           ),
         ),
         SizedBox(width: AppSizes.spaceBetweenItems_32),
@@ -38,6 +43,7 @@ class CustomRowTextFiled extends StatelessWidget {
             hintText: hintText2,
             controller: secondController,
             maxLines: secondMaxLines,
+            validator: secondValidator,
           ),
         ),
       ],

@@ -43,5 +43,19 @@
   "failure_no_internet_connection": "لا يوجد اتصال بالإنترنت",
   "about_the_project": "حول المشروع",
   "live_preview": "معاينة مباشرة",
-  "view_code": "عرض الكود"
+  "view_code": "عرض الكود",
+  "validation_name_required": "الاسم مطلوب!",
+  "validation_name_invalid": "هذا الاسم غير صالح",
+  "validation_email_required": "البريد الإلكتروني مطلوب!",
+  "validation_email_invalid": "هذا البريد الإلكتروني غير صالح",
+  "validation_phone_required": "رقم الهاتف مطلوب!",
+  "validation_phone_invalid": "رقم الهاتف هذا غير صالح",
+  "validation_timeline_required": "المدة الزمنية مطلوبة!",
+  "validation_country_required": "الدولة مطلوبة!",
+  "validation_service_required": "الخدمة المطلوبة مطلوبة!",
+  "validation_project_details_required": "تفاصيل المشروع مطلوبة!",
+  "validation_project_details_min_length": "يرجى تقديم المزيد من التفاصيل (20 حرف على الأقل)",
+  "country": "الدولة",
+  "ok": "موافق",
+  "message_sent_successfully": "تم إرسال الرسالة بنجاح"
 }

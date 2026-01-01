@@ -48,5 +48,19 @@ abstract class  LocaleKeys {
   static const about_the_project = 'about_the_project';
   static const live_preview = 'live_preview';
   static const view_code = 'view_code';
+  static const validation_name_required = 'validation_name_required';
+  static const validation_name_invalid = 'validation_name_invalid';
+  static const validation_email_required = 'validation_email_required';
+  static const validation_email_invalid = 'validation_email_invalid';
+  static const validation_phone_required = 'validation_phone_required';
+  static const validation_phone_invalid = 'validation_phone_invalid';
+  static const validation_timeline_required = 'validation_timeline_required';
+  static const validation_country_required = 'validation_country_required';
+  static const validation_service_required = 'validation_service_required';
+  static const validation_project_details_required = 'validation_project_details_required';
+  static const validation_project_details_min_length = 'validation_project_details_min_length';
+  static const country = 'country';
+  static const ok = 'ok';
+  static const message_sent_successfully = 'message_sent_successfully';
 
 }
