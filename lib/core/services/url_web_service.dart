@@ -25,21 +25,29 @@ abstract class UrlWebService {
     await _launchInNewTab(url);
   }
 
-  static Future<void> openLinkedIn(String profileUsername) async {
-    if (profileUsername.isEmpty) return;
-    final url = '${ApiConstants.linkedinUrl}$profileUsername';
-
-    await _launchInNewTab(url);
-  }
-
-  static Future<void> openGitHub(String username) async {
-    final url = '${ApiConstants.githubUrl}$username';
-
+  static Future<void> openUrl(String url) async {
     await _launchInNewTab(url);
   }
 
   static Future<void> downloadCv(String driveLink) async {
     final link = '${ApiConstants.downloadCvGoogleDrive}$driveLink';
     return await _launchInNewTab(link);
+  }
+
+  static Future<void> openEmail(String email) async {
+    final Uri emailUri = Uri.parse('mailto:$email');
+
+    log('Opening email: $emailUri');
+
+    try {
+      await launchUrl(
+        emailUri,
+        mode: LaunchMode.platformDefault, // 👈 مهم
+        webOnlyWindowName: '_self', // 👈 أفضل للـ mailto
+      );
+    } catch (e) {
+      log('Error opening email: $e');
+      throw Exception('Could not open email');
+    }
   }
 }

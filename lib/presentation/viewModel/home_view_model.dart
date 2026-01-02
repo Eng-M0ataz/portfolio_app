@@ -23,12 +23,7 @@ class HomeViewModel extends Cubit<HomeState> {
       case OpenWhatsAppEvent():
         await _openWhatsApp();
         break;
-      case OpenLinkedinEvent():
-        await _openLinkedin();
-        break;
-      case OpenGithubEvent():
-        await _openGithub();
-        break;
+
       case DownloadCvEvent():
         await _downloadCv();
         break;
@@ -38,10 +33,25 @@ class HomeViewModel extends Cubit<HomeState> {
           path: event.path,
         );
         break;
+      case OpenUrlEvent():
+        await _openUrl(url: event.url);
+        break;
+
       case FilterProjectsEvent():
         filterProjects(category: event.category);
         break;
+      case OpenEmailEvent():
+        await _openEmail(email: event.email);
+        break;
     }
+  }
+
+  Future<void> _openUrl({required String url}) async {
+    await UrlWebService.openUrl(url);
+  }
+
+  Future<void> _openEmail({required String email}) async {
+    await UrlWebService.openEmail(email);
   }
 
   Future<void> _sendClientRequest({
@@ -63,22 +73,12 @@ class HomeViewModel extends Cubit<HomeState> {
   }
 
   Future<void> _openWhatsApp() async {
-    final number = state.profileData?.personalInfo.whatsappNumber ?? '';
+    final number = state.profileData!.personalInfo.whatsappNumber;
     await UrlWebService.openWhatsApp(number);
   }
 
-  Future<void> _openLinkedin() async {
-    final link = state.profileData?.personalInfo.linkedinLink ?? '';
-    await UrlWebService.openLinkedIn(link);
-  }
-
-  Future<void> _openGithub() async {
-    final link = state.profileData?.personalInfo.githubLink ?? '';
-    await UrlWebService.openGitHub(link);
-  }
-
   Future<void> _downloadCv() async {
-    final link = state.profileData?.personalInfo.cvLink ?? '';
+    final link = state.profileData!.personalInfo.cvLink;
     await UrlWebService.downloadCv(link);
   }
 

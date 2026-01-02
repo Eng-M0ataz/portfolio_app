@@ -9,12 +9,21 @@ class Project {
   final String? category;
   final String? thumbnail;
   final List<String>? images;
+  @JsonKey(name: 'github_link')
+  final String? githubLink;
+  @JsonKey(name: 'demo_link')
+  final String? demoLink;
+  @JsonKey(name: 'description')
+  final String? description;
 
   Project({
     this.projectName,
     this.category,
     this.thumbnail,
     this.images,
+    this.githubLink,
+    this.demoLink,
+    this.description,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {

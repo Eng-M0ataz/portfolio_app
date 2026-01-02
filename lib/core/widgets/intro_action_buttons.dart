@@ -21,14 +21,14 @@ class _IntroActionButtonsState extends State<IntroActionButtons> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<HomeViewModel>();
-
+    final email = viewModel.state.profileData!.personalInfo.email;
     return Wrap(
       spacing: AppSizes.spaceBetweenItems_24,
       runSpacing: AppSizes.spaceBetweenItems_16,
       children: [
         CustomElevatedButton(
           onPressed: () {
-            // Scroll to contact section or handle hire me action
+            viewModel.doIntent(OpenEmailEvent(email: email));
           },
           child: Text(
             LocaleKeys.hire_me.tr(),

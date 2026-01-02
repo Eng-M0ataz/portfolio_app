@@ -10,9 +10,10 @@ class FetchHomeDataEvent extends HomeEvent {
 
 class OpenWhatsAppEvent extends HomeEvent {}
 
-class OpenLinkedinEvent extends HomeEvent {}
-
-class OpenGithubEvent extends HomeEvent {}
+class OpenUrlEvent extends HomeEvent {
+  OpenUrlEvent({required this.url});
+  final String url;
+}
 
 class DownloadCvEvent extends HomeEvent {}
 
@@ -27,4 +28,9 @@ class FilterProjectsEvent extends HomeEvent {
   FilterProjectsEvent({required this.category});
 
   final String category;
+}
+
+class OpenEmailEvent extends HomeEvent {
+  OpenEmailEvent({required this.email});
+  final String email;
 }

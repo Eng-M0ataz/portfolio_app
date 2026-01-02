@@ -1,11 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/elevated_button_custom_them.dart';
 import 'package:portfolio_website/domain/entity/project_entity.dart';
+import 'package:portfolio_website/presentation/viewModel/home_event.dart';
+import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 
 class ProjectDetailsWidget extends StatelessWidget {
   const ProjectDetailsWidget({super.key, required this.projectEntity});
@@ -34,42 +37,51 @@ class ProjectDetailsWidget extends StatelessWidget {
             ).textTheme.labelLarge!.copyWith(color: AppColorsDark.white),
           ),
           const SizedBox(height: AppSizes.spaceBetweenItems_16),
-          // Description
           Text(
             LocaleKeys.about_the_project.tr(),
             style: Theme.of(
               context,
-            ).textTheme.titleMedium!.copyWith(color: Colors.white70),
+            ).textTheme.titleMedium!.copyWith(color: AppColorsDark.white),
           ),
           const SizedBox(height: AppSizes.spaceBetweenItems_8),
           Text(
-            "This project is a comprehensive solution designed to... [Add projectEntity.description here]",
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: AppColorsDark.greyc6C6,
-              height: 1.5,
-            ),
+            projectEntity.description,
+            style: AppTextStyles.medium_16(
+              context,
+            ).copyWith(color: AppColorsDark.greyc6C6),
           ),
           const SizedBox(height: AppSizes.spaceBetweenItems_24),
 
           Row(
             children: [
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: () {}, // Link to Live Demo
-                  icon: const Icon(Icons.launch),
-                  label: Text(
-                    LocaleKeys.live_preview.tr(),
-                    style: AppTextStyles.bold_16(
-                      context,
-                    ).copyWith(color: AppColorsDark.white),
+              Visibility(
+                visible: false,
+                child: Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      context.read<HomeViewModel>().doIntent(
+                        OpenUrlEvent(url: projectEntity.demoLink),
+                      );
+                    },
+                    icon: const Icon(Icons.launch),
+                    label: Text(
+                      LocaleKeys.live_preview.tr(),
+                      style: AppTextStyles.bold_16(
+                        context,
+                      ).copyWith(color: AppColorsDark.white),
+                    ),
                   ),
                 ),
               ),
               const SizedBox(width: AppSizes.spaceBetweenItems_12),
-              Expanded(
+              Center(
                 child: CustomElevatedButtonThem(
                   child: ElevatedButton.icon(
-                    onPressed: () {}, // Link to GitHub
+                    onPressed: () {
+                      context.read<HomeViewModel>().doIntent(
+                        OpenUrlEvent(url: projectEntity.githubLink),
+                      );
+                    },
                     icon: const Icon(Icons.code, color: AppColorsDark.white),
                     label: Text(
                       LocaleKeys.view_code.tr(),

@@ -47,6 +47,9 @@ extension ProjectModelMapper on Project {
       category: category ?? '',
       thumbnail: thumbnail ?? '',
       images: images ?? [],
+      githubLink: githubLink ?? '',
+      demoLink: demoLink ?? '',
+      description: description ?? '',
     );
   }
 }

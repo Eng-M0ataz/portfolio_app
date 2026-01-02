@@ -14,7 +14,11 @@ class SocialMediaWidget extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<HomeViewModel>();
+    final personalInfo = context
+        .read<HomeViewModel>()
+        .state
+        .profileData!
+        .personalInfo;
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       spacing: AppSizes.spaceBetweenItems_16,
@@ -22,19 +26,23 @@ class SocialMediaWidget extends StatelessWidget {
         SocialMediaItem(
           icon: FontAwesomeIcons.linkedin,
           onPressed: () async {
-            await viewModel.doIntent(OpenLinkedinEvent());
+            await context.read<HomeViewModel>().doIntent(
+              OpenUrlEvent(url: personalInfo.linkedinLink),
+            );
           },
         ),
         SocialMediaItem(
           icon: FontAwesomeIcons.github,
           onPressed: () async {
-            await viewModel.doIntent(OpenGithubEvent());
+            await context.read<HomeViewModel>().doIntent(
+              OpenUrlEvent(url: personalInfo.githubLink),
+            );
           },
         ),
         SocialMediaItem(
           icon: FontAwesomeIcons.whatsapp,
           onPressed: () async {
-            await viewModel.doIntent(OpenWhatsAppEvent());
+            await context.read<HomeViewModel>().doIntent(OpenWhatsAppEvent());
           },
         ),
       ],
