@@ -4,6 +4,7 @@ import 'package:portfolio_website/core/functions/api_results.dart';
 import 'package:portfolio_website/core/services/url_web_service.dart';
 import 'package:portfolio_website/data/model/input_model/contact_request.dart';
 import 'package:portfolio_website/domain/entity/portfolio_entity.dart';
+import 'package:portfolio_website/domain/entity/project_entity.dart';
 import 'package:portfolio_website/domain/repository/home_repo.dart';
 import 'package:portfolio_website/presentation/viewModel/home_event.dart';
 import 'package:portfolio_website/presentation/viewModel/home_state.dart';
@@ -37,6 +38,9 @@ class HomeViewModel extends Cubit<HomeState> {
           path: event.path,
         );
         break;
+      case FilterProjectsEvent():
+        filterProjects(category: event.category);
+        break;
     }
   }
 
@@ -44,7 +48,6 @@ class HomeViewModel extends Cubit<HomeState> {
     required ContactRequest contactRequest,
     required String path,
   }) async {
-
     emit(state.copyWith(isLoading: true, isSuccess: false));
     final ApiResult<void> result = await _homeRepo.sendClientRequest(
       path: path,
@@ -86,12 +89,32 @@ class HomeViewModel extends Cubit<HomeState> {
 
     switch (result) {
       case ApiSuccessResult<PortfolioEntity>():
-        emit(state.copyWith(isLoading: false, profileData: result.data));
+        emit(
+          state.copyWith(
+            isLoading: false,
+            profileData: result.data,
+            filteredProjects: result.data.projects,
+          ),
+        );
 
         break;
       case ApiErrorResult<PortfolioEntity>():
         emit(state.copyWith(isLoading: false, failure: result.failure));
         break;
     }
+  }
+
+  void filterProjects({required String category}) {
+    final projects = state.profileData!.projects;
+    final cat = category.trim().toLowerCase();
+
+    final List<ProjectEntity> filtered = (cat == 'all')
+        ? projects
+        : projects.where((project) {
+            final pCat = project.category.trim().toLowerCase();
+            return pCat.contains(cat);
+          }).toList();
+
+    emit(state.copyWith(filteredProjects: filtered));
   }
 }

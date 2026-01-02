@@ -27,19 +27,18 @@ class CustomElevatedLoadingButton extends StatelessWidget {
     return Center(
       child: AnimatedContainer(
         height: 38,
-        width: isLoading ? 80 : MediaQuery.of(context).size.width,
+        width: isLoading ? 80 : null,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
         child: isLoading
             ? Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color:
-                      containerColor ,
+                  color: containerColor,
                   borderRadius: BorderRadius.circular(
                     AppSizes.borderRadiusFull,
                   ),
-                  border: Border.all(color:  AppColorsDark.grey_959)
+                  border: Border.all(color: AppColorsDark.grey_959),
                 ),
                 child: SizedBox(
                   width: 20,
@@ -55,7 +54,7 @@ class CustomElevatedLoadingButton extends StatelessWidget {
                 ),
               )
             : SizedBox(
-                height: buttonHigh ?? 38,
+                height: buttonHigh ?? 48,
                 child: ElevatedButton(onPressed: onPressed, child: widget),
               ),
       ),

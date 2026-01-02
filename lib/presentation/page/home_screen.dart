@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-
 class _HomeScreenState extends State<HomeScreen> {
   late final GlobalKey homeKey;
   late final GlobalKey servicesKey;
@@ -29,21 +28,24 @@ class _HomeScreenState extends State<HomeScreen> {
     contactKey = GlobalKey();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        log('${constraints.maxWidth}');
-        if (context.isMobile) {
-          return MobileLayout(
+        log(constraints.maxWidth.toString());
+        if (constraints.maxWidth <= 320) {
+          return SizedBox.shrink();
+        } else if (context.isTablet) {
+          return TabletLayout(
             homeKey: homeKey,
             servicesKey: servicesKey,
             aboutKey: aboutKey,
             portfolioKey: portfolioKey,
             contactKey: contactKey,
           );
-        } else if (context.isTablet) {
-          return TabletLayout(
+        } else if (context.isMobile) {
+          return MobileLayout(
             homeKey: homeKey,
             servicesKey: servicesKey,
             aboutKey: aboutKey,

@@ -28,6 +28,11 @@ class ContactInfo extends StatelessWidget {
             spacing: AppSizes.spaceBetweenItems_40,
             children: contacts,
           )
-        : Column(spacing: AppSizes.spaceBetweenItems_16, children: contacts);
+        : Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: AppSizes.spaceBetweenItems_16,
+            children: contacts,
+          );
   }
 }

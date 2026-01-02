@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/core/config/theme/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -20,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       validator: validator,
       maxLines: maxLines,
+      cursorColor: AppColorsDark.orange,
       decoration: InputDecoration(hintText: hintText),
     );
   }

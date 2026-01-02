@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/utils/constants/app_fonts.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
 abstract class AppThemeDark {
-  static ThemeData getTheme() {
+  static ThemeData getTheme(BuildContext context) {
     return ThemeData(
       brightness: Brightness.dark,
       useMaterial3: true,
@@ -64,6 +65,9 @@ abstract class AppThemeDark {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColorsDark.grey_252525,
+        errorStyle: AppTextStyles.medium_16(
+          context,
+        ).copyWith(color: AppColorsDark.red),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(AppSizes.borderRadiusMd_8),
@@ -74,9 +78,14 @@ abstract class AppThemeDark {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+          borderSide: BorderSide(color: AppColorsDark.orange),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd_8),
+          borderSide: BorderSide(color: AppColorsDark.red),
         ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(

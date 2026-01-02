@@ -22,3 +22,9 @@ class SendClientRequestEvent extends HomeEvent {
   final ContactRequest contactRequest;
   final String path;
 }
+
+class FilterProjectsEvent extends HomeEvent {
+  FilterProjectsEvent({required this.category});
+
+  final String category;
+}

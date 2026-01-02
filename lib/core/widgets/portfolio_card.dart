@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
-import 'package:portfolio_website/core/widgets/project_detail_dialog.dart';
+import 'package:portfolio_website/core/widgets/project_details_dialog.dart';
 import 'package:portfolio_website/domain/entity/project_entity.dart';
 
 class PortfolioCard extends StatelessWidget {
@@ -13,12 +13,12 @@ class PortfolioCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDesktop=context.isDeskTop;
+    bool isDesktop = context.isDeskTop;
     return InkWell(
       onTap: () => _showProjectDetails(context),
       borderRadius: BorderRadius.circular(AppSizes.borderRadiusXxl_24),
       child: AspectRatio(
-        aspectRatio:isDesktop?415/473 :284 / 338,
+        aspectRatio: isDesktop ? 415 / 473 : 284 / 338,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusXxl_24),
@@ -48,7 +48,9 @@ class PortfolioCard extends StatelessWidget {
                     bottomRight: Radius.circular(AppSizes.borderRadiusXxl_24),
                   ),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingMd_16),
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSizes.paddingMd_16,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -73,6 +75,7 @@ class PortfolioCard extends StatelessWidget {
       ),
     );
   }
+
   void _showProjectDetails(BuildContext context) {
     showDialog(
       context: context,

@@ -51,7 +51,7 @@ class PortFolio extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        theme: AppThemeDark.getTheme(),
+        theme: AppThemeDark.getTheme(context),
         initialRoute: AppRoutes.splashRoute,
         onGenerateRoute: RouteGenerator.getRoute,
       ),
