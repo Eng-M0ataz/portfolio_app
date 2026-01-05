@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/presentation/widgets/web/desktop_view_body.dart';
+import 'package:portfolio_website/core/widgets/sections_registry.dart';
 
 class DesktopLayout extends StatefulWidget {
   const DesktopLayout({
@@ -22,8 +22,8 @@ class DesktopLayout extends StatefulWidget {
 }
 
 class _DesktopLayoutState extends State<DesktopLayout> {
-  late ScrollController _scrollController;
   late List<GlobalKey> globalKeysList;
+  late List<Widget> _sectionsList;
   @override
   void initState() {
     globalKeysList = [
@@ -33,22 +33,26 @@ class _DesktopLayoutState extends State<DesktopLayout> {
       widget.portfolioKey,
       widget.contactKey,
     ];
-    _scrollController = ScrollController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: DesktopViewBody(homeKey: widget.homeKey,
+    _sectionsList = sectionsForDesktop(
+      homeKey: widget.homeKey,
       servicesKey: widget.servicesKey,
       aboutKey: widget.aboutKey,
       portfolioKey: widget.portfolioKey,
       contactKey: widget.contactKey,
-      globalKeysList: globalKeysList,));
+      globalKeysList: globalKeysList,
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+        cacheExtent: 0,
+        padding: EdgeInsets.zero,
+        itemCount: _sectionsList.length,
+        itemBuilder: (context, index) => _sectionsList[index],
+      ),
+    );
   }
 }

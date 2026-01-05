@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/core/functions/do_animation.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
@@ -18,7 +19,8 @@ class ContactMeSection extends StatefulWidget {
   State<ContactMeSection> createState() => _ContactMeSectionState();
 }
 
-class _ContactMeSectionState extends State<ContactMeSection> {
+class _ContactMeSectionState extends State<ContactMeSection>
+    with AutomaticKeepAliveClientMixin {
   late final TextEditingController nameController;
   late final TextEditingController emailController;
   late final TextEditingController phoneController;
@@ -28,7 +30,6 @@ class _ContactMeSectionState extends State<ContactMeSection> {
   late final TextEditingController projectDetailsController;
   late final GlobalKey<FormState> mobileFormKey;
   late final GlobalKey<FormState> formKey;
-
 
   @override
   void initState() {
@@ -45,6 +46,7 @@ class _ContactMeSectionState extends State<ContactMeSection> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: widget.padding,
       child: Column(
@@ -94,6 +96,9 @@ class _ContactMeSectionState extends State<ContactMeSection> {
           ),
         ],
       ),
-    );
+    ).applyMyStyle();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

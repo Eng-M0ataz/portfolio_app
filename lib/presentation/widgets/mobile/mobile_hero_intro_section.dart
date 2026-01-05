@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/functions/do_animation.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
 import 'package:portfolio_website/core/utils/constants/app_assets.dart';
@@ -14,26 +15,28 @@ import 'package:portfolio_website/core/widgets/stats_overview_widget.dart';
 import 'package:portfolio_website/presentation/viewModel/home_view_model.dart';
 import 'package:portfolio_website/presentation/widgets/mobile/app_bar_mobile_layout.dart';
 
-class MobileHeroIntroSection extends StatelessWidget {
-  const MobileHeroIntroSection({
-    super.key,
-    this.padding = EdgeInsets.zero,
-    required this.scaffoldKey,
-  });
+class MobileHeroIntroSection extends StatefulWidget {
+  const MobileHeroIntroSection({super.key, this.padding = EdgeInsets.zero});
 
   final EdgeInsets padding;
-  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
+  State<MobileHeroIntroSection> createState() => _MobileHeroIntroSectionState();
+}
+
+class _MobileHeroIntroSectionState extends State<MobileHeroIntroSection>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     final profileData = context.read<HomeViewModel>().state.profileData!;
 
     return Padding(
-      padding: padding,
+      padding: widget.padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          MobileAppBarLayout(scaffoldKey: scaffoldKey),
+          MobileAppBarLayout(),
           SizedBox(height: AppSizes.spaceBetweenItems_60),
           Text(
             LocaleKeys.hi.tr(),
@@ -60,6 +63,9 @@ class MobileHeroIntroSection extends StatelessWidget {
           PersonalImageWidget(),
         ],
       ),
-    );
+    ).applyMyStyle();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

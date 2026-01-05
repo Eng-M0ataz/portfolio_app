@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/core/utils/constants/sizes.dart';
-import 'package:portfolio_website/core/widgets/buttom_bar_section.dart';
-import 'package:portfolio_website/presentation/widgets/about_me_section.dart';
-import 'package:portfolio_website/presentation/widgets/contact_me_section.dart';
-import 'package:portfolio_website/presentation/widgets/portfolio_section.dart';
-import 'package:portfolio_website/presentation/widgets/service_section.dart';
-import 'package:portfolio_website/presentation/widgets/tablet/tablet_hero_intro_section.dart';
+import 'package:portfolio_website/core/widgets/sections_registry.dart';
 
 class TabletLayout extends StatefulWidget {
   const TabletLayout({
@@ -29,6 +23,7 @@ class TabletLayout extends StatefulWidget {
 
 class _TabletLayoutState extends State<TabletLayout> {
   late ScrollController _scrollController;
+  late List<Widget> _sectionsList;
   late List<GlobalKey> globalKeysList;
 
   @override
@@ -41,6 +36,14 @@ class _TabletLayoutState extends State<TabletLayout> {
       widget.contactKey,
     ];
     _scrollController = ScrollController();
+    _sectionsList = sectionsForTablet(
+      homeKey: widget.homeKey,
+      servicesKey: widget.servicesKey,
+      aboutKey: widget.aboutKey,
+      portfolioKey: widget.portfolioKey,
+      contactKey: widget.contactKey,
+      globalKeysList: globalKeysList,
+    );
     super.initState();
   }
 
@@ -53,46 +56,11 @@ class _TabletLayoutState extends State<TabletLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TabletHeroIntroSection(
-              globalKeysList: globalKeysList,
-              key: widget.homeKey,
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.paddingXxl_48,
-                vertical: AppSizes.paddingXxl_60,
-              ),
-            ),
-            ServicesSection(
-              key: widget.servicesKey,
-              padding: EdgeInsetsGeometry.symmetric(
-                horizontal: AppSizes.paddingXxl_48,
-                vertical: AppSizes.paddingXxl_60,
-              ),
-            ),
-            AboutMeSection(
-              key: widget.aboutKey,
-              padding: EdgeInsetsGeometry.symmetric(
-                horizontal: AppSizes.paddingXxl_48,
-                vertical: AppSizes.paddingXxl_60,
-              ),
-            ),
-            PortfolioSection(key: widget.portfolioKey),
-            ContactMeSection(
-              key: widget.contactKey,
-              padding: EdgeInsetsGeometry.symmetric(
-                horizontal: AppSizes.paddingXxl_48,
-                vertical: AppSizes.paddingXxl_60,
-              ),
-            ),
-
-            BottomBarSection(
-              padding: EdgeInsetsGeometry.only(top: AppSizes.paddingXxl_60),
-              globalKeysList: globalKeysList,
-            ),
-          ],
-        ),
+      body: ListView.builder(
+        cacheExtent: 0,
+        controller: _scrollController,
+        itemCount: _sectionsList.length,
+        itemBuilder: (context, index) => _sectionsList[index],
       ),
     );
   }

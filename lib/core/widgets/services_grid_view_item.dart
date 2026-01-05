@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/hover_container.dart';
 import 'package:portfolio_website/domain/entity/service.dart';
@@ -12,6 +13,11 @@ class ServicesGridViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double iconSize(BuildContext context) {
+      final isDeskTop = context.isDeskTop;
+      return isDeskTop ? 60 : 40;
+    }
+
     return HoverContainer(
       padding: const EdgeInsets.all(AppSizes.paddingLg_24),
       child: Column(
@@ -20,6 +26,8 @@ class ServicesGridViewItem extends StatelessWidget {
         children: [
           CachedNetworkImage(
             imageUrl: service.photo,
+            width: iconSize(context),
+            height: iconSize(context),
             errorWidget: (context, url, error) => const Icon(Icons.error),
             placeholder: (context, url) => const CircularProgressIndicator(),
           ),
