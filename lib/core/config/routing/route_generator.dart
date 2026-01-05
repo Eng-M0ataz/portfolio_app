@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/core/model/gallery_args.dart';
 import 'package:portfolio_website/core/utils/constants/app_routes.dart';
+import 'package:portfolio_website/core/widgets/gallery_preview_screen.dart';
 import 'package:portfolio_website/presentation/page/home_screen.dart';
 import 'package:portfolio_website/presentation/page/splash_screen.dart';
 
@@ -10,6 +12,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppRoutes.splashRoute:
         return MaterialPageRoute(builder: (_) => SplashScreen());
+      case AppRoutes.galleryPreviewRoute:
+        GalleryArgs args = settings.arguments as GalleryArgs;
+        return MaterialPageRoute(
+          builder: (_) => GalleryPreviewScreen(args: args),
+        );
       default:
         return unDefinedRoute();
     }

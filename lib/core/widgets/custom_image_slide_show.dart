@@ -1,6 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:portfolio_website/core/helpers/responsive_helper.dart';
+import 'package:portfolio_website/core/helpers/routing_extensions.dart';
+import 'package:portfolio_website/core/model/gallery_args.dart';
+import 'package:portfolio_website/core/utils/constants/app_routes.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
 class CustomImageSlideShow extends StatelessWidget {
@@ -15,32 +19,45 @@ class CustomImageSlideShow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      carouselController: controller,
-      options: CarouselOptions(
-        disableCenter: true,
-        enableInfiniteScroll: false,
-        scrollPhysics: BouncingScrollPhysics(),
-      ),
-      items: itemImagesList.map((imagePath) {
-        return FittedBox(
-          fit: BoxFit.scaleDown,
-          child: CachedNetworkImage(
-            imageUrl: imagePath,
-            fit: BoxFit.fill,
-            errorWidget: (context, url, error) => Container(
-              color: Colors.grey[900],
-              child: const Icon(
-                Icons.broken_image,
-                color: Colors.white24,
-                size: AppSizes.icon_24,
+    return Padding(
+      padding: context.isDeskTop
+          ? EdgeInsets.symmetric(horizontal: AppSizes.paddingXl_40)
+          : EdgeInsets.symmetric(horizontal: AppSizes.paddingXxl_50),
+      child: CarouselSlider.builder(
+        itemCount: itemImagesList.length,
+        carouselController: controller,
+        options: CarouselOptions(
+          enableInfiniteScroll: false,
+          enlargeCenterPage: true,
+          viewportFraction: context.isMobile ? 0.8 : 0.4,
+          aspectRatio: context.isMobile ? 1.2 : 2.5,
+        ),
+        itemBuilder: (context, index, realIndex) {
+          final imagePath = itemImagesList[index];
+
+          return GestureDetector(
+            onTap: () {
+              context.pushNamed(
+                AppRoutes.galleryPreviewRoute,
+                arguments: GalleryArgs(itemImagesList, index),
+              );
+            },
+            child: Hero(
+              tag: imagePath,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusXl_16),
+                child: CachedNetworkImage(
+                  imageUrl: imagePath,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
               ),
             ),
-            placeholder: (context, url) =>
-                Center(child: CircularProgressIndicator()),
-          ),
-        );
-      }).toList(),
+          );
+        },
+      ),
     );
   }
 }

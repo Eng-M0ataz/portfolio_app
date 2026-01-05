@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
-import 'package:portfolio_website/core/utils/constants/sizes.dart';
+import 'package:portfolio_website/core/widgets/carousel_navigation_arrows.dart';
 import 'package:portfolio_website/core/widgets/custom_image_slide_show.dart';
 import 'package:portfolio_website/domain/entity/project_entity.dart';
 
@@ -35,34 +35,11 @@ class _CustomSlidShowWidgetState extends State<CustomSlidShowWidget> {
             itemImagesList: widget.projectEntity.images,
           ),
         ),
-        Positioned.fill(
-          right: AppSizes.paddingLg_24,
-          left: AppSizes.paddingLg_24,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconButton.filled(
-                style: IconButton.styleFrom(
-                  backgroundColor: Colors.black45,
-                  iconSize: AppSizes.icon_20,
-                ),
-                onPressed: () => _carouselSliderController.previousPage(),
-                icon: const Icon(Icons.arrow_back, color: AppColorsDark.orange),
-              ),
-              IconButton.filled(
-                style: IconButton.styleFrom(
-                  backgroundColor: Colors.black45,
-                  iconSize: AppSizes.icon_20,
-                ),
-                onPressed: () => _carouselSliderController.nextPage(),
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  color: AppColorsDark.orange,
-                ),
-              ),
-            ],
-          ),
+
+        CarouselNavigationArrows(
+          controller: _carouselSliderController,
+          onTapLeft: () => _carouselSliderController.previousPage(),
+          onTapRight: () => _carouselSliderController.nextPage(),
         ),
       ],
     );

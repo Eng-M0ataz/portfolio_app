@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:portfolio_website/core/utils/constants/api_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,7 +19,6 @@ abstract class UrlWebService {
   static Future<void> openWhatsApp(String phoneNumber) async {
     final cleanedPhoneNumber = phoneNumber.trim();
     final url = '${ApiConstants.whatsappUrl}$cleanedPhoneNumber';
-    log('Opening WhatsApp for phone number: $url');
     await _launchInNewTab(url);
   }
 
@@ -35,19 +32,9 @@ abstract class UrlWebService {
   }
 
   static Future<void> openEmail(String email) async {
-    final Uri emailUri = Uri.parse('mailto:$email');
+    final String url =
+        '${ApiConstants.emailUrl}$email${ApiConstants.emailQuerySuffix}';
 
-    log('Opening email: $emailUri');
-
-    try {
-      await launchUrl(
-        emailUri,
-        mode: LaunchMode.platformDefault, // 👈 مهم
-        webOnlyWindowName: '_self', // 👈 أفضل للـ mailto
-      );
-    } catch (e) {
-      log('Error opening email: $e');
-      throw Exception('Could not open email');
-    }
+    return await _launchInNewTab(url);
   }
 }
