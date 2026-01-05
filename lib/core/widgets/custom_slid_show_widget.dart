@@ -1,6 +1,10 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/helpers/routing_extensions.dart';
+import 'package:portfolio_website/core/model/gallery_args.dart';
+import 'package:portfolio_website/core/utils/constants/app_routes.dart';
+import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/carousel_navigation_arrows.dart';
 import 'package:portfolio_website/core/widgets/custom_image_slide_show.dart';
 import 'package:portfolio_website/domain/entity/project_entity.dart';
@@ -40,6 +44,23 @@ class _CustomSlidShowWidgetState extends State<CustomSlidShowWidget> {
           controller: _carouselSliderController,
           onTapLeft: () => _carouselSliderController.previousPage(),
           onTapRight: () => _carouselSliderController.nextPage(),
+        ),
+        Positioned(
+          right: AppSizes.paddingLg_24,
+          bottom: AppSizes.paddingLg_24,
+          child: IconButton.filled(
+            style: IconButton.styleFrom(
+              backgroundColor: Colors.black45,
+              iconSize: AppSizes.icon_20,
+            ),
+            onPressed: () {
+              context.pushNamed(
+                AppRoutes.galleryPreviewRoute,
+                arguments: GalleryArgs(widget.projectEntity.images),
+              );
+            },
+            icon: Icon(Icons.open_in_full, color: AppColorsDark.orange),
+          ),
         ),
       ],
     );

@@ -19,13 +19,13 @@ class GalleryPreviewScreen extends StatefulWidget {
 
 class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
   late PageController pageController;
-  late int currentIndex;
+  int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    currentIndex = widget.args.index;
-    pageController = PageController(initialPage: widget.args.index);
+
+    pageController = PageController(initialPage: 0);
   }
 
   @override
@@ -37,7 +37,7 @@ class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
           PhotoViewGallery.builder(
             itemCount: widget.args.images.length,
             pageController: pageController,
-            onPageChanged: (index) => setState(() => currentIndex = index),
+            onPageChanged: (index) => currentIndex = index,
             scrollPhysics: const BouncingScrollPhysics(),
             backgroundDecoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
@@ -59,7 +59,11 @@ class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
             top: 10,
             right: 10,
             child: IconButton(
-              icon: Icon(Icons.close, color: AppColorsDark.orange, size: AppSizes.icon_20),
+              icon: Icon(
+                Icons.close,
+                color: AppColorsDark.orange,
+                size: AppSizes.icon_20,
+              ),
               onPressed: () => Navigator.pop(context),
             ),
           ),
@@ -78,7 +82,7 @@ class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
           ),
 
           Positioned(
-           bottom: 5,
+            bottom: 5,
             child: GalleryCounter(
               currentIndex: currentIndex,
               totalCount: widget.args.images.length,

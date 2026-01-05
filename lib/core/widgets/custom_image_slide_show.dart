@@ -2,9 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:portfolio_website/core/helpers/responsive_helper.dart';
-import 'package:portfolio_website/core/helpers/routing_extensions.dart';
-import 'package:portfolio_website/core/model/gallery_args.dart';
-import 'package:portfolio_website/core/utils/constants/app_routes.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
 class CustomImageSlideShow extends StatelessWidget {
@@ -35,24 +32,16 @@ class CustomImageSlideShow extends StatelessWidget {
         itemBuilder: (context, index, realIndex) {
           final imagePath = itemImagesList[index];
 
-          return GestureDetector(
-            onTap: () {
-              context.pushNamed(
-                AppRoutes.galleryPreviewRoute,
-                arguments: GalleryArgs(itemImagesList, index),
-              );
-            },
-            child: Hero(
-              tag: imagePath,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(AppSizes.borderRadiusXl_16),
-                child: CachedNetworkImage(
-                  imageUrl: imagePath,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) =>
-                      Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
+          return Hero(
+            tag: imagePath,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXl_16),
+              child: CachedNetworkImage(
+                imageUrl: imagePath,
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           );
