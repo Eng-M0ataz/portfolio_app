@@ -39,7 +39,7 @@ class _WebHeroIntroSectionState extends State<WebHeroIntroSection>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(child: WebIntroWidget(profileData: profileData)),
+              Flexible(child: WebIntroWidget(profileData: profileData!)),
               Flexible(child: PersonalImageWidget()),
             ],
           ),
