@@ -1,62 +1,52 @@
 import 'package:equatable/equatable.dart';
+import 'package:portfolio_website/core/enum/request_status.dart';
 import 'package:portfolio_website/core/errors/failure.dart';
 import 'package:portfolio_website/domain/entity/portfolio_entity.dart';
 import 'package:portfolio_website/domain/entity/project_entity.dart';
 
 class HomeState extends Equatable {
   const HomeState({
-    this.isLoading = true,
-    this.failure,
+    this.fetchStatus = RequestStatus.loading,
+    this.fetchFailure,
     this.profileData,
-    this.isSuccess = false,
     this.filteredProjects = const [],
-    this.isClientRequestLoading = false,
+    this.clientRequestStatus = RequestStatus.idle,
     this.clientRequestFailure,
-    this.isClientRequestSuccess = false,
   });
 
-  final bool isLoading;
-  final Failure? failure;
+  final RequestStatus fetchStatus;
+  final Failure? fetchFailure;
   final PortfolioEntity? profileData;
-  final bool isSuccess;
   final List<ProjectEntity> filteredProjects;
-  final bool isClientRequestLoading;
+
+  final RequestStatus clientRequestStatus;
   final Failure? clientRequestFailure;
-  final bool isClientRequestSuccess;
 
   HomeState copyWith({
-    bool? isLoading,
-    Failure? failure,
+    RequestStatus? fetchStatus,
+    Failure? fetchFailure,
     PortfolioEntity? profileData,
-    bool? isSuccess,
     List<ProjectEntity>? filteredProjects,
-    bool? isClientRequestLoading,
+    RequestStatus? clientRequestStatus,
     Failure? clientRequestFailure,
-    bool? isClientRequestSuccess,
   }) {
     return HomeState(
-      isLoading: isLoading ?? this.isLoading,
-      failure: failure ?? this.failure,
+      fetchStatus: fetchStatus ?? this.fetchStatus,
+      fetchFailure: fetchFailure ?? this.fetchFailure,
       profileData: profileData ?? this.profileData,
-      isSuccess: isSuccess ?? this.isSuccess,
       filteredProjects: filteredProjects ?? this.filteredProjects,
-      isClientRequestLoading:
-          isClientRequestLoading ?? this.isClientRequestLoading,
+      clientRequestStatus: clientRequestStatus ?? this.clientRequestStatus,
       clientRequestFailure: clientRequestFailure ?? this.clientRequestFailure,
-      isClientRequestSuccess:
-          isClientRequestSuccess ?? this.isClientRequestSuccess,
     );
   }
 
   @override
   List<Object?> get props => [
-    isLoading,
-    failure,
+    fetchStatus,
+    fetchFailure,
     profileData,
-    isSuccess,
     filteredProjects,
-    isClientRequestLoading,
+    clientRequestStatus,
     clientRequestFailure,
-    isClientRequestSuccess,
   ];
 }

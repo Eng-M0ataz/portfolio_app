@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/enum/request_status.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/helpers/dialogue_utils.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
@@ -38,12 +39,9 @@ class CustomElevatedButtonBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeViewModel, HomeState>(
       bloc: context.read<HomeViewModel>(),
-      // // Only react to a new failure (null -> non-null) or a new success (false -> true)
-      listenWhen: (p, c) =>
-      (p.clientRequestFailure != c.clientRequestFailure) ||
-          (p.isClientRequestSuccess != c.isClientRequestSuccess),
+      listenWhen: (p, c) => p.clientRequestStatus != c.clientRequestStatus,
       listener: (context, state) {
-        if (state.clientRequestFailure != null&& !state.isClientRequestSuccess ) {
+        if (state.clientRequestStatus == RequestStatus.failure) {
           DialogueUtils.showMessage(
             context: context,
             title: 'Failure',
@@ -52,7 +50,7 @@ class CustomElevatedButtonBlocConsumer extends StatelessWidget {
           );
           return;
         }
-        if (state.isClientRequestSuccess) {
+        if (state.clientRequestStatus == RequestStatus.success) {
           DialogueUtils.showMessage(
             context: context,
             title: 'Success',
@@ -69,9 +67,8 @@ class CustomElevatedButtonBlocConsumer extends StatelessWidget {
               context,
             ).copyWith(color: AppColorsDark.grey_959),
           ),
-          isLoading: state.isClientRequestLoading,
+          isLoading: state.clientRequestStatus == RequestStatus.loading,
           onPressed: () {
-
             if (formKey.currentState!.validate()) {
               context.read<HomeViewModel>().doIntent(
                 SendClientRequestEvent(

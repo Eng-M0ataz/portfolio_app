@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_website/core/di/di.dart';
+import 'package:portfolio_website/core/enum/request_status.dart';
 import 'package:portfolio_website/core/helpers/routing_extensions.dart';
 import 'package:portfolio_website/core/utils/constants/api_constants.dart';
 import 'package:portfolio_website/core/utils/constants/app_routes.dart';
@@ -38,13 +39,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: BlocConsumer<HomeViewModel, HomeState>(
         listenWhen: (p, c) => p.profileData != c.profileData,
         listener: (context, state) {
-          if (state.profileData != null) {
+          if (state.fetchStatus == RequestStatus.success) {
             context.pushNamed(AppRoutes.homeRoute);
           }
         },
         builder: (context, state) {
-          if (state.failure != null) {
-            return Center(child: Text(state.failure!.errorMessage));
+          if (state.fetchStatus == RequestStatus.failure) {
+            return Center(child: Text(state.fetchFailure!.errorMessage));
           }
           return Center(child: SplashWidget());
         },
