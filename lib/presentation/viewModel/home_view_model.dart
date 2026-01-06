@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:portfolio_website/core/functions/api_results.dart';
@@ -12,6 +14,7 @@ import 'package:portfolio_website/presentation/viewModel/home_state.dart';
 @lazySingleton
 class HomeViewModel extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
+
 
   HomeViewModel(this._homeRepo) : super(const HomeState());
 
@@ -43,7 +46,9 @@ class HomeViewModel extends Cubit<HomeState> {
       case OpenEmailEvent():
         await _openEmail(email: event.email);
         break;
+
     }
+
   }
 
   Future<void> _openUrl({required String url}) async {
@@ -58,21 +63,21 @@ class HomeViewModel extends Cubit<HomeState> {
     required ContactRequest contactRequest,
     required String path,
   }) async {
-    emit(state.copyWith(isLoading: true, isSuccess: false, failure: null));
+    emit(state.copyWith(isClientRequestLoading: true,isClientRequestSuccess: false));
     final ApiResult<void> result = await _homeRepo.sendClientRequest(
       path: path,
       contactRequest: contactRequest,
     );
     switch (result) {
       case ApiSuccessResult<void>():
-        emit(state.copyWith(isLoading: false, isSuccess: true, failure: null));
+        emit(state.copyWith(isClientRequestLoading: false, isClientRequestSuccess: true,));
         break;
       case ApiErrorResult<void>():
         emit(
           state.copyWith(
-            isLoading: false,
-            failure: result.failure,
-            isSuccess: false,
+            isClientRequestLoading: false,
+            clientRequestFailure: result.failure,
+
           ),
         );
     }
@@ -123,4 +128,6 @@ class HomeViewModel extends Cubit<HomeState> {
 
     emit(state.copyWith(filteredProjects: filtered));
   }
+
+
 }
