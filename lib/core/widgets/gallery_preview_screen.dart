@@ -1,8 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/helpers/routing_extensions.dart';
 import 'package:portfolio_website/core/model/gallery_args.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 import 'package:portfolio_website/core/widgets/carousel_navigation_arrows.dart';
@@ -18,14 +19,21 @@ class GalleryPreviewScreen extends StatefulWidget {
 }
 
 class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
-  late PageController pageController;
-  int currentIndex = 0;
+  late PageController _pageController;
+  late ValueNotifier<int> _pageIndex;
 
   @override
   void initState() {
     super.initState();
+    _pageIndex = ValueNotifier(0);
+    _pageController = PageController(initialPage: _pageIndex.value);
+  }
 
-    pageController = PageController(initialPage: 0);
+  @override
+  void dispose() {
+    super.dispose();
+    _pageIndex.dispose();
+    _pageController.dispose();
   }
 
   @override
@@ -36,8 +44,8 @@ class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
         children: [
           PhotoViewGallery.builder(
             itemCount: widget.args.images.length,
-            pageController: pageController,
-            onPageChanged: (index) => currentIndex = index,
+            pageController: _pageController,
+            onPageChanged: (index) => _pageIndex.value = index,
             scrollPhysics: const BouncingScrollPhysics(),
             backgroundDecoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
@@ -58,23 +66,22 @@ class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
           Positioned(
             top: 10,
             right: 10,
-            child: IconButton(
-              icon: Icon(
-                Icons.close,
-                color: AppColorsDark.orange,
-                size: AppSizes.icon_20,
+            child: IconButton.filled(
+              style: IconButton.styleFrom(
+                backgroundColor: Colors.black45,
+                iconSize: AppSizes.icon_20,
               ),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
+              icon: const Icon(Icons.close, color: AppColorsDark.orange),
             ),
           ),
-
           CarouselNavigationArrows(
-            onTapRight: () => pageController.nextPage(
+            onTapRight: () => _pageController.nextPage(
               duration: Duration(milliseconds: 300),
               curve: Curves.easeInOut,
             ),
             onTapLeft: () {
-              pageController.previousPage(
+              _pageController.previousPage(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );
@@ -84,7 +91,7 @@ class _GalleryPreviewScreenState extends State<GalleryPreviewScreen> {
           Positioned(
             bottom: 5,
             child: GalleryCounter(
-              currentIndex: currentIndex,
+              currentIndex: _pageIndex,
               totalCount: widget.args.images.length,
             ),
           ),

@@ -19,12 +19,16 @@ class ProjectDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingLg_24,vertical: AppSizes.paddingLg_24 ),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.paddingLg_24,
+        vertical: AppSizes.paddingLg_24,
+      ),
       child: Column(
-        spacing: context.isDeskTop ? AppSizes.spaceBetweenItems_48: AppSizes.paddingMd_16,
+        spacing: context.isDeskTop
+            ? AppSizes.spaceBetweenItems_48
+            : AppSizes.spaceBetweenItems_16,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Text(
             projectEntity.projectName,
             style: AppTextStyles.bold_30(
@@ -57,7 +61,6 @@ class ProjectDetailsWidget extends StatelessWidget {
               ),
             ),
           ),
-
         ],
       ),
     );

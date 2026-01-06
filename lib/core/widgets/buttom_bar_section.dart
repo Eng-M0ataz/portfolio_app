@@ -53,7 +53,7 @@ class BottomBarSection extends StatelessWidget {
           verticalSpace,
           const SocialMediaWidget(mainAxisAlignment: MainAxisAlignment.center),
           verticalSpace,
-          ContactInfo(isDesktop: isDesktop),
+          ContactInfo(),
         ],
       ),
     );

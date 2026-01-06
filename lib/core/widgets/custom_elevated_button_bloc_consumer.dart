@@ -5,7 +5,6 @@ import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/helpers/dialogue_utils.dart';
 import 'package:portfolio_website/core/localization/locale_keys.g.dart';
-import 'package:portfolio_website/core/utils/constants/api_constants.dart';
 import 'package:portfolio_website/core/widgets/custom_elevated_loading_button.dart';
 import 'package:portfolio_website/data/model/input_model/contact_request.dart';
 import 'package:portfolio_website/presentation/viewModel/home_event.dart';
@@ -38,18 +37,24 @@ class CustomElevatedButtonBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeViewModel, HomeState>(
       bloc: context.read<HomeViewModel>(),
-
+      // Only react to a new failure (null -> non-null) or a new success (false -> true)
+      listenWhen: (p, c) =>
+          (p.failure == null && c.failure != null) ||
+          (!p.isSuccess && c.isSuccess),
       listener: (context, state) {
-        if (state.failure != null && !state.isLoading) {
-          return DialogueUtils.showMessage(
+        if (state.failure != null && !state.isSuccess) {
+          DialogueUtils.showMessage(
             context: context,
+            title: 'Failure',
             message: state.failure!.errorMessage,
             posActionName: LocaleKeys.ok.tr(),
           );
+          return;
         }
         if (state.isSuccess) {
           DialogueUtils.showMessage(
             context: context,
+            title: 'Success',
             message: LocaleKeys.message_sent_successfully.tr(),
             posActionName: LocaleKeys.ok.tr(),
           );
@@ -65,24 +70,23 @@ class CustomElevatedButtonBlocConsumer extends StatelessWidget {
           ),
           isLoading: state.isLoading,
           onPressed: () {
-            ContactRequest contactRequest = ContactRequest(
-              name: nameController.text.trim(),
-              email: emailController.text.trim(),
-              phone: phoneController.text.trim(),
-              service: serviceController.text.trim(),
-              timeline: timelineController.text.trim(),
-              country: countryController.text.trim(),
-              details: projectDetailsController.text.trim(),
-            );
-            if (!formKey.currentState!.validate()) {
-              return;
+            if (state.isLoading) return;
+            if (formKey.currentState!.validate()) {
+              context.read<HomeViewModel>().doIntent(
+                SendClientRequestEvent(
+                  path: 'ApiConstants.contactMeRequest',
+                  contactRequest: ContactRequest(
+                    name: nameController.text.trim(),
+                    email: emailController.text.trim(),
+                    phone: phoneController.text.trim(),
+                    service: serviceController.text.trim(),
+                    timeline: timelineController.text.trim(),
+                    country: countryController.text.trim(),
+                    details: projectDetailsController.text.trim(),
+                  ),
+                ),
+              );
             }
-            context.read<HomeViewModel>().doIntent(
-              SendClientRequestEvent(
-                contactRequest: contactRequest,
-                path: ApiConstants.contactMeRequest,
-              ),
-            );
           },
         );
       },

@@ -8,6 +8,17 @@ class MobileLayout extends StatefulWidget {
   final GlobalKey portfolioKey;
   final GlobalKey contactKey;
 
+  // Contact form controllers and keys
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+  final TextEditingController phoneController;
+  final TextEditingController serviceController;
+  final TextEditingController timelineController;
+  final TextEditingController countryController;
+  final TextEditingController projectDetailsController;
+
+  final GlobalKey<FormState> formKey;
+
   const MobileLayout({
     super.key,
     required this.homeKey,
@@ -15,6 +26,14 @@ class MobileLayout extends StatefulWidget {
     required this.aboutKey,
     required this.portfolioKey,
     required this.contactKey,
+    required this.nameController,
+    required this.emailController,
+    required this.phoneController,
+    required this.serviceController,
+    required this.timelineController,
+    required this.countryController,
+    required this.projectDetailsController,
+    required this.formKey,
   });
 
   @override
@@ -41,6 +60,14 @@ class _MobileLayoutState extends State<MobileLayout> {
       aboutKey: widget.aboutKey,
       portfolioKey: widget.portfolioKey,
       contactKey: widget.contactKey,
+      nameController: widget.nameController,
+      emailController: widget.emailController,
+      phoneController: widget.phoneController,
+      serviceController: widget.serviceController,
+      timelineController: widget.timelineController,
+      countryController: widget.countryController,
+      projectDetailsController: widget.projectDetailsController,
+      formKey: widget.formKey,
       globalKeysList: globalKeysList,
     );
 

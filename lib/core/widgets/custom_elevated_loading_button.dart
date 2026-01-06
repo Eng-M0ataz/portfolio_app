@@ -27,7 +27,7 @@ class CustomElevatedLoadingButton extends StatelessWidget {
     return Center(
       child: AnimatedContainer(
         height: 38,
-        width: isLoading ? 80 : null,
+        width: isLoading ? 60 : 120,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
         child: isLoading

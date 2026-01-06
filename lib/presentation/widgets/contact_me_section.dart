@@ -11,9 +11,28 @@ import 'package:portfolio_website/core/widgets/section_header.dart';
 import 'package:portfolio_website/presentation/widgets/mobile/contact_me_mobile_layout.dart';
 
 class ContactMeSection extends StatefulWidget {
-  const ContactMeSection({super.key, required this.padding});
+  const ContactMeSection({
+    super.key,
+    required this.padding,
+    required this.countryController,
+    required this.emailController,
+    required this.formKey,
+    required this.nameController,
+    required this.phoneController,
+    required this.projectDetailsController,
+    required this.serviceController,
+    required this.timelineController,
+  });
 
   final EdgeInsetsGeometry padding;
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+  final TextEditingController phoneController;
+  final TextEditingController serviceController;
+  final TextEditingController timelineController;
+  final TextEditingController countryController;
+  final TextEditingController projectDetailsController;
+  final GlobalKey<FormState> formKey;
 
   @override
   State<ContactMeSection> createState() => _ContactMeSectionState();
@@ -21,29 +40,6 @@ class ContactMeSection extends StatefulWidget {
 
 class _ContactMeSectionState extends State<ContactMeSection>
     with AutomaticKeepAliveClientMixin {
-  late final TextEditingController nameController;
-  late final TextEditingController emailController;
-  late final TextEditingController phoneController;
-  late final TextEditingController serviceController;
-  late final TextEditingController timelineController;
-  late final TextEditingController countryController;
-  late final TextEditingController projectDetailsController;
-  late final GlobalKey<FormState> mobileFormKey;
-  late final GlobalKey<FormState> formKey;
-
-  @override
-  void initState() {
-    super.initState();
-    nameController = TextEditingController();
-    emailController = TextEditingController();
-    phoneController = TextEditingController();
-    serviceController = TextEditingController();
-    timelineController = TextEditingController();
-    countryController = TextEditingController();
-    projectDetailsController = TextEditingController();
-    formKey = GlobalKey<FormState>();
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -60,38 +56,38 @@ class _ContactMeSectionState extends State<ContactMeSection>
             builder: (context, constraints) {
               return !context.isMobile
                   ? ContactMeTabletAndDeskTopLayout(
-                      nameController: nameController,
-                      emailController: emailController,
-                      phoneController: phoneController,
-                      serviceController: serviceController,
-                      timelineController: timelineController,
-                      countryController: countryController,
-                      projectDetailsController: projectDetailsController,
-                      formKey: formKey,
+                      nameController: widget.nameController,
+                      emailController: widget.emailController,
+                      phoneController: widget.phoneController,
+                      serviceController: widget.serviceController,
+                      timelineController: widget.timelineController,
+                      countryController: widget.countryController,
+                      projectDetailsController: widget.projectDetailsController,
+                      formKey: widget.formKey,
                     )
                   : ContactMeMobileLayOut(
-                      nameController: nameController,
-                      emailController: emailController,
-                      phoneController: phoneController,
-                      serviceController: serviceController,
-                      timelineController: timelineController,
-                      countryController: countryController,
-                      projectDetailsController: projectDetailsController,
-                      formKey: formKey,
+                      nameController: widget.nameController,
+                      emailController: widget.emailController,
+                      phoneController: widget.phoneController,
+                      serviceController: widget.serviceController,
+                      timelineController: widget.timelineController,
+                      countryController: widget.countryController,
+                      projectDetailsController: widget.projectDetailsController,
+                      formKey: widget.formKey,
                     );
             },
           ),
 
           CustomElevatedButtonThem(
             child: CustomElevatedButtonBlocConsumer(
-              nameController: nameController,
-              emailController: emailController,
-              phoneController: phoneController,
-              serviceController: serviceController,
-              countryController: countryController,
-              projectDetailsController: projectDetailsController,
-              timelineController: timelineController,
-              formKey: formKey,
+              nameController: widget.nameController,
+              emailController: widget.emailController,
+              phoneController: widget.phoneController,
+              serviceController: widget.serviceController,
+              countryController: widget.countryController,
+              projectDetailsController: widget.projectDetailsController,
+              timelineController: widget.timelineController,
+              formKey: widget.formKey,
             ),
           ),
         ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/core/config/theme/app_colors.dart';
+import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 
 abstract class DialogueUtils {
   static void showMessage({
@@ -18,7 +20,12 @@ abstract class DialogueUtils {
             Navigator.pop(context);
             posAction?.call();
           },
-          child: Text(posActionName),
+          child: Text(
+            posActionName,
+            style: AppTextStyles.medium_16(
+              context,
+            ).copyWith(color: AppColorsDark.orange),
+          ),
         ),
       );
     }
@@ -29,7 +36,7 @@ abstract class DialogueUtils {
             Navigator.pop(context);
             ngeAction?.call();
           },
-          child: Text(ngeActionName),
+          child: Text(ngeActionName, style: AppTextStyles.medium_16(context)),
         ),
       );
     }
@@ -39,12 +46,17 @@ abstract class DialogueUtils {
       context: context,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: AppColorsDark.black,
+          shadowColor: AppColorsDark.orange,
+          contentTextStyle: AppTextStyles.medium_16(
+            context,
+          ).copyWith(color: AppColorsDark.white),
+          titleTextStyle: AppTextStyles.bold_24(
+            context,
+          ).copyWith(color: AppColorsDark.orange),
           actions: actions,
-          content: Text(message, style: Theme.of(context).textTheme.labelLarge),
-          title: Text(
-            title ?? "",
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+          content: Text(message),
+          title: Text(title ?? ""),
         );
       },
     );

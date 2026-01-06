@@ -35,6 +35,8 @@ class PortfolioCard extends StatelessWidget {
                     width: double.infinity,
                     height: double.infinity,
                     imageUrl: projectEntity.thumbnail,
+                    placeholder: (context, url) =>
+                        Center(child: CircularProgressIndicator()),
                     fit: BoxFit.cover,
                   ),
                 ),

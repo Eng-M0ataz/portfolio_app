@@ -58,17 +58,23 @@ class HomeViewModel extends Cubit<HomeState> {
     required ContactRequest contactRequest,
     required String path,
   }) async {
-    emit(state.copyWith(isLoading: true, isSuccess: false));
+    emit(state.copyWith(isLoading: true, isSuccess: false, failure: null));
     final ApiResult<void> result = await _homeRepo.sendClientRequest(
       path: path,
       contactRequest: contactRequest,
     );
     switch (result) {
       case ApiSuccessResult<void>():
-        emit(state.copyWith(isLoading: false, isSuccess: true));
+        emit(state.copyWith(isLoading: false, isSuccess: true, failure: null));
         break;
       case ApiErrorResult<void>():
-        emit(state.copyWith(isLoading: false, failure: result.failure));
+        emit(
+          state.copyWith(
+            isLoading: false,
+            failure: result.failure,
+            isSuccess: false,
+          ),
+        );
     }
   }
 

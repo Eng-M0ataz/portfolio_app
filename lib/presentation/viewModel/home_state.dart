@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:portfolio_website/core/errors/failure.dart';
 import 'package:portfolio_website/domain/entity/portfolio_entity.dart';
 import 'package:portfolio_website/domain/entity/project_entity.dart';
 
-class HomeState {
+class HomeState extends Equatable {
   const HomeState({
     this.isLoading = true,
     this.failure,
@@ -32,4 +33,13 @@ class HomeState {
       filteredProjects: filteredProjects ?? this.filteredProjects,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    isLoading,
+    failure,
+    profileData,
+    isSuccess,
+    filteredProjects,
+  ];
 }

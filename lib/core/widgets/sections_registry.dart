@@ -16,6 +16,14 @@ List<Widget> sectionsForMobile({
   required GlobalKey aboutKey,
   required GlobalKey portfolioKey,
   required GlobalKey contactKey,
+  required TextEditingController nameController,
+  required TextEditingController emailController,
+  required TextEditingController phoneController,
+  required TextEditingController serviceController,
+  required TextEditingController timelineController,
+  required TextEditingController countryController,
+  required TextEditingController projectDetailsController,
+  required GlobalKey<FormState> formKey,
   required List<GlobalKey> globalKeysList,
 }) {
   return [
@@ -47,6 +55,14 @@ List<Widget> sectionsForMobile({
         horizontal: AppSizes.paddingLg_24,
         vertical: AppSizes.paddingXxl_50,
       ),
+      nameController: nameController,
+      emailController: emailController,
+      phoneController: phoneController,
+      serviceController: serviceController,
+      timelineController: timelineController,
+      countryController: countryController,
+      projectDetailsController: projectDetailsController,
+      formKey: formKey,
     ),
     BottomBarSection(
       padding: EdgeInsetsGeometry.only(top: AppSizes.paddingXxl_50),
@@ -57,12 +73,20 @@ List<Widget> sectionsForMobile({
 
 /// Returns the sections used in the tablet layout.
 List<Widget> sectionsForTablet({
+  required GlobalKey<FormState> formKey,
+  required List<GlobalKey> globalKeysList,
   required GlobalKey homeKey,
   required GlobalKey servicesKey,
   required GlobalKey aboutKey,
   required GlobalKey portfolioKey,
   required GlobalKey contactKey,
-  required List<GlobalKey> globalKeysList,
+  required TextEditingController nameController,
+  required TextEditingController emailController,
+  required TextEditingController phoneController,
+  required TextEditingController serviceController,
+  required TextEditingController timelineController,
+  required TextEditingController countryController,
+  required TextEditingController projectDetailsController,
 }) {
   return [
     TabletHeroIntroSection(
@@ -94,6 +118,14 @@ List<Widget> sectionsForTablet({
         horizontal: AppSizes.paddingXxl_48,
         vertical: AppSizes.paddingXxl_60,
       ),
+      nameController: nameController,
+      emailController: emailController,
+      phoneController: phoneController,
+      serviceController: serviceController,
+      timelineController: timelineController,
+      countryController: countryController,
+      projectDetailsController: projectDetailsController,
+      formKey: formKey,
     ),
     BottomBarSection(
       padding: EdgeInsetsGeometry.only(top: AppSizes.paddingXxl_60),
@@ -109,6 +141,15 @@ List<Widget> sectionsForDesktop({
   required GlobalKey aboutKey,
   required GlobalKey portfolioKey,
   required GlobalKey contactKey,
+  required TextEditingController nameController,
+  required TextEditingController emailController,
+  required TextEditingController phoneController,
+  required TextEditingController serviceController,
+  required TextEditingController timelineController,
+  required TextEditingController countryController,
+  required TextEditingController projectDetailsController,
+  required GlobalKey<FormState> formKey,
+
   required List<GlobalKey> globalKeysList,
 }) {
   return [
@@ -134,6 +175,14 @@ List<Widget> sectionsForDesktop({
         horizontal: AppSizes.padding_80,
         vertical: AppSizes.padding_75,
       ),
+      nameController: nameController,
+      emailController: emailController,
+      phoneController: phoneController,
+      serviceController: serviceController,
+      timelineController: timelineController,
+      countryController: countryController,
+      projectDetailsController: projectDetailsController,
+      formKey: formKey,
     ),
     BottomBarSection(
       padding: const EdgeInsets.only(top: AppSizes.padding_75),

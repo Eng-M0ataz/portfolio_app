@@ -15,7 +15,12 @@ class ServicesGridViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     double iconSize(BuildContext context) {
       final isDeskTop = context.isDeskTop;
-      return isDeskTop ? 60 : 40;
+      final isTablet = context.isMobile;
+      return isDeskTop
+          ? 80
+          : isTablet
+          ? 60
+          : 40;
     }
 
     return HoverContainer(

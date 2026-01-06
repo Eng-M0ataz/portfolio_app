@@ -3,8 +3,8 @@ import 'package:portfolio_website/core/config/theme/app_colors.dart';
 import 'package:portfolio_website/core/helpers/app_texts_style.dart';
 import 'package:portfolio_website/core/utils/constants/sizes.dart';
 
-class GalleryCounter extends StatefulWidget {
-  final int currentIndex;
+class GalleryCounter extends StatelessWidget {
+  final ValueNotifier<int> currentIndex;
   final int totalCount;
 
   const GalleryCounter({
@@ -13,20 +13,6 @@ class GalleryCounter extends StatefulWidget {
     required this.totalCount,
   });
 
-  @override
-  State<GalleryCounter> createState() => _GalleryCounterState();
-}
-
-
-
-class _GalleryCounterState extends State<GalleryCounter> {
-  @override
-  void initState() {
-    setState(() {
-       widget.currentIndex;
-    });
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,11 +24,16 @@ class _GalleryCounterState extends State<GalleryCounter> {
         color: Colors.black45,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusXxl_24),
       ),
-      child: Text(
-        "${widget.currentIndex + 1} / ${widget.totalCount}",
-        style: AppTextStyles.medium_16(
-          context,
-        ).copyWith(color: AppColorsDark.orange,fontSize: 12),
+      child: ValueListenableBuilder(
+        valueListenable: currentIndex,
+        builder: (context, value, child) {
+          return Text(
+            "${value + 1} / $totalCount",
+            style: AppTextStyles.medium_16(
+              context,
+            ).copyWith(color: AppColorsDark.orange, fontSize: 12),
+          );
+        },
       ),
     );
   }
